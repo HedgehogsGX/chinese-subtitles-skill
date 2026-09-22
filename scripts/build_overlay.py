@@ -136,11 +136,16 @@ def main():
             img.save(p); cache[key] = p
         segs.append((cache[key], dur))
 
+    # Paths go in as bare basenames. ffmpeg's concat demuxer resolves a relative
+    # `file` against the directory holding the list, not the cwd, so writing the
+    # joined "<outdir>/s00001.png" sends it looking for "<outdir>/<outdir>/...".
+    # The PNGs sit next to concat.txt, so the basename is what resolves - and it
+    # keeps working whether --outdir was given as a relative or an absolute path.
     listfile = os.path.join(a.outdir, "concat.txt")
     with open(listfile, "w", encoding="utf-8") as f:
         for p, d in segs:
-            f.write(f"file '{p}'\nduration {d:.6f}\n")
-        f.write(f"file '{segs[-1][0]}'\n")
+            f.write(f"file '{os.path.basename(p)}'\nduration {d:.6f}\n")
+        f.write(f"file '{os.path.basename(segs[-1][0])}'\n")
 
     total = sum(d for _, d in segs)
     print(f"  states {n}  segments {len(segs)}")
