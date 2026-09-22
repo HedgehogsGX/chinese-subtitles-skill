@@ -91,6 +91,26 @@ Cue boundaries create intervals a few milliseconds long. Skipping them as
 Fold each micro-gap into the previous segment instead of dropping it. Then confirm
 the overlay's total equals the video duration; `build_overlay.py` prints the drift.
 
+## concat.txt paths resolve against the list file, not the cwd
+
+ffmpeg's concat demuxer resolves a relative `file` entry against the directory
+holding the list, **not** the working directory. So a list at `ov/concat.txt`
+whose entries read `file 'ov/s00001.png'` sends ffmpeg looking for
+`ov/ov/s00001.png`, and the documented two-step run dies immediately:
+
+```
+[concat @ 0x…] Impossible to open 'ov/ov/s00001.png'
+ov/concat.txt: No such file or directory
+```
+
+`build_overlay.py` therefore writes bare basenames, which resolve correctly and
+work whether the outdir was passed as a relative or an absolute path. If you ever
+hand-build a concat list, use basenames or absolute paths — never a path relative
+to the cwd.
+
+This is also why `splice.py` never hit the bug: it passes an absolute `ovdir`
+under its temp directory, so the joined paths happened to be absolute already.
+
 ## Splicing: do the arithmetic in frames
 
 `-t` and `-ss` with `-c copy` land on keyframe boundaries and rarely return
