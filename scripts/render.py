@@ -11,7 +11,8 @@ darkening to sit on, which is what keeps them readable at the worst moments.
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 W, H = 1920, 1080
-DIALOGUE_BOTTOM = 975      # bottom of the text block, clear of the Apex HUD
+DIALOGUE_BOTTOM = 975      # bottom of the text block; clears a typical FPS HUD.
+                           # Other footage puts other things here - check a frame.
 
 
 def load_font(fontpath, size, index=0, variation=None):

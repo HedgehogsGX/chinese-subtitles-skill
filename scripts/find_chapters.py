@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Locate burned-in chapter/title cards so they can be translated too.
 
-Many Apex creators burn "Chapter 3: Lurching Stance" style cards into the video
+Many creators burn "Chapter 3: Lurching Stance" style cards into the video
 itself rather than using YouTube chapter markers, so `yt-dlp --write-info-json`
 reports zero chapters and you have to find them in the pixels.
 
@@ -10,6 +10,7 @@ near-white pixels. A card produces a spike of several hundred against a typical
 background of single digits, and - crucially - it persists for 2-6 consecutive
 seconds. Bright gameplay (snow, muzzle flash, sky) also spikes, but rarely in a
 run that long, so requiring a multi-second run is what separates signal from noise.
+Nothing here is game-specific - it keys on brightness and persistence, not content.
 
 This narrows hundreds of frames to a handful of candidates. Always eyeball the
 reported timestamps before trusting them - read the actual card text off a frame

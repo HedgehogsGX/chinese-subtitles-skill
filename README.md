@@ -1,17 +1,22 @@
-# apex-chinese-subtitles
+# video-chinese-subtitles
 
-A [Claude Code](https://claude.com/claude-code) skill that translates an Apex
-Legends gameplay video from English into Simplified Chinese and burns the
-captions into the video.
+A [Claude Code](https://claude.com/claude-code) skill that translates an English
+video into Simplified Chinese and burns the captions into it.
 
-Built from a real 22-minute burn-in, so the defaults are ones that survived
-iteration rather than guesses.
+Built from a real 22-minute Apex Legends burn-in, so the defaults are ones that
+survived iteration rather than guesses. The pipeline itself is subject-agnostic —
+nothing in the scripts knows what the footage is. What changes per video is the
+glossary.
 
 ## What it does
 
-- Translates against a bundled 1,246-row Apex EN→中文 glossary, keeping movement
-  technique names in English (`lurch`, `tap-strafe`, `RAS`, `Neo strafe`, `bhop` …)
-  and using official Simplified hero names (动力小子, 兰伯特, 导管 …)
+- Translates against a bundled per-game EN→中文 glossary — **Apex Legends**
+  (1,217 rows), **Warframe** (3,844), **osu!** (429), **Minecraft 速通/MCSR**
+  (358) — each with its own 字幕使用原则 conventions for which jargon stays in
+  English and which official Simplified name to use
+- Handles video with no glossary too: talks, vlogs, tutorials, other games. It
+  translates against verifiable official names and hands back the list of terms
+  it had to settle, which is the seed of the next glossary
 - Builds a **one-line-only** SRT — long lines are split into sequential cues, never
   wrapped — with no overlaps and nothing too fast or too brief to read
 - Renders captions as white text with a dark stroke and soft shadow, **no
@@ -19,7 +24,7 @@ iteration rather than guesses.
 - Finds chapter cards that are burned into the video (not YouTube chapter markers)
   and places a Chinese line underneath each
 - Moves captions out of the way where the video has its own on-screen text, such
-  as an outro card
+  as a HUD or an outro card
 - Encodes the final file, and can re-encode **just the seconds that changed** when
   you fix a few lines later — about 15 seconds instead of 20 minutes
 
@@ -28,8 +33,8 @@ Downloading video is out of scope. The source file must already exist locally.
 ## Install
 
 ```bash
-git clone https://github.com/HedgehogsGX/apex-chinese-subtitles.git \
-  ~/.claude/skills/apex-chinese-subtitles
+git clone https://github.com/HedgehogsGX/chinese-subtitles-skill.git \
+  ~/.claude/skills/video-chinese-subtitles
 ```
 
 Then just ask Claude Code for Chinese subtitles on a video file — the skill
@@ -44,19 +49,32 @@ triggers on its own.
 ## Layout
 
 ```
-SKILL.md                    workflow and the settled style rules
-references/glossary.md      full Apex EN→中文 glossary, 16 sections
-references/pipeline.md      known traps: drift, splice arithmetic, term splitting
-assets/NotoSansSC-Bold.ttf  思源黑体 Bold (static instance)
+SKILL.md                         workflow and the settled style rules
+references/glossaries/
+  README.md                      which glossary to read, and which of its sections
+  apex.md                        Apex Legends, S29
+  warframe.md                    Warframe, 国际服 update 43
+  osu.md                         osu! — standard, mania, taiko, catch
+  minecraft-mcsr.md              Minecraft 速通 1.16.1 RSG + MCSR Ranked
+references/pipeline.md           known traps: drift, splice arithmetic, term splitting
+assets/NotoSansSC-Bold.ttf       思源黑体 Bold (static instance)
 scripts/
-  build_srt.py              translations → one-line timed SRT
-  render.py                 stroked caption renderer
-  build_overlay.py          SRT → timed transparent overlay track
-  find_chapters.py          locate burned-in chapter cards
-  burn_in.py                composite and encode
-  splice.py                 re-encode only what changed, frame-exact
-  verify.py                 frame count, audio seams, legibility contact sheet
+  build_srt.py                   translations → one-line timed SRT
+  render.py                      stroked caption renderer
+  build_overlay.py               SRT → timed transparent overlay track
+  find_chapters.py               locate burned-in chapter cards
+  burn_in.py                     composite and encode
+  splice.py                      re-encode only what changed, frame-exact
+  verify.py                      frame count, audio seams, legibility contact sheet
 ```
+
+## Adding a glossary
+
+Drop a `<game>.md` file in `references/glossaries/` and add a row to the table in
+its README. The existing four share a shape — a `字幕使用原则` section, term tables
+with **英文或缩写 | 字幕首选 | 中文社区常见说法 | 说明**, and a 最容易误译的词 list —
+and that shape is what makes them usable while translating rather than only as
+reading. `references/glossaries/README.md` has the full convention.
 
 ## Using the scripts directly
 
@@ -73,5 +91,5 @@ python scripts/verify.py out.mp4 --expect-frames 81258 --contact-sheet sheet.jpg
 
 ## Licence
 
-The scripts and glossary are mine. `assets/NotoSansSC-Bold.ttf` is Noto Sans SC,
+The scripts and glossaries are mine. `assets/NotoSansSC-Bold.ttf` is Noto Sans SC,
 redistributed under the SIL Open Font License 1.1 — see `assets/NotoSansSC-OFL.txt`.
