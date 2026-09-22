@@ -24,12 +24,13 @@ So captions are rendered as transparent PNGs in PIL and composited with `overlay
 This needs no extra dependency, and it gives exact control over stroke, shadow and
 per-cue vertical position — which the style requires anyway.
 
-## Caption legibility over gameplay
+## Caption legibility over bright footage
 
-A plain outline is not enough. Apex footage includes near-white frames (concrete,
-snow, muzzle flash) where a thin stroke has nothing to contrast against. The style
-is therefore two layers: a hard black stroke on the glyphs, plus a blurred dark
-halo under them that gives the text a local darkening to sit on.
+A plain outline is not enough. Almost any source has near-white frames somewhere —
+concrete, snow, muzzle flash, a blown-out sky, a whiteboard, a slide — and a thin
+stroke there has nothing to contrast against. The style is therefore two layers: a
+hard black stroke on the glyphs, plus a blurred dark halo under them that gives the
+text a local darkening to sit on.
 
 Do not judge legibility on a convenient frame. Find the worst one:
 
@@ -70,7 +71,9 @@ fragment in place.
 When no punctuation is available, the splitter falls back to a space. Unguarded,
 that once broke `Neo strafe` across two cues: `…怎么把 Neo` / `strafe 接成前向 bhop`.
 A space is only a valid split point if it is not flanked by Latin letters on both
-sides. Same hazard applies to `RAS strafe`, `Pito strafe`, `wall push`.
+sides. Same hazard applies to `RAS strafe`, `Pito strafe`, `wall push` — and to
+any multi-word Latin term the subject happens to use, such as `chordjack stamina`,
+`bastion remnant` or `Void Relic`.
 
 Detect it:
 

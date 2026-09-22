@@ -1,14 +1,18 @@
 ---
-name: apex-chinese-subtitles
-description: Translate an Apex Legends (or similar FPS gameplay) video from English into Simplified Chinese and burn the captions into the video. Covers glossary-consistent translation, one-line caption timing, stroked white captions with no background box, burned-in chapter-card translation, full encode, and cheap targeted re-encode when only a few lines change. Use this whenever the user wants Chinese subtitles or 中文字幕 on a gameplay video, wants captions burned/hardcoded into an MP4, mentions an Apex video that needs translating, asks to fix or restyle subtitles on a video they already have, or mentions 身法/lurch/tap-strafe translation — even if they do not name this skill and even if they only ask for "subtitles" generally. Does NOT download video; the source file must already exist locally.
+name: video-chinese-subtitles
+description: Translate any English video into Simplified Chinese and burn the captions into it. Covers glossary-consistent translation, one-line caption timing, stroked white captions with no background box, burned-in chapter-card translation, full encode, and cheap targeted re-encode when only a few lines change. Bundles EN→中文 glossaries for Apex Legends, Warframe, osu! and Minecraft speedrun/MCSR, and works on non-gaming video too — talks, vlogs, tutorials, documentaries. Use this whenever the user wants Chinese subtitles or 中文字幕 on a video, wants captions burned/hardcoded into an MP4, has a gameplay video that needs translating, asks to fix or restyle subtitles on a video they already have, or mentions 身法/lurch/tap-strafe translation — even if they do not name this skill and even if they only ask for "subtitles" generally. Does NOT download video; the source file must already exist locally.
 ---
 
-# Apex 中文字幕 — translate and burn in
+# 视频中文字幕 — translate and burn in
 
-Takes an English gameplay video that already exists on disk and produces a
+Takes an English video that already exists on disk and produces a
 Simplified-Chinese hardcoded version, plus a matching SRT.
 
 Downloading is deliberately out of scope. Assume the source MP4 is already there.
+
+The pipeline is subject-agnostic — it was built on a 22-minute Apex movement
+video, but nothing in the scripts knows or cares what the footage is. What
+changes per video is the glossary and the caption band position.
 
 ## What good output looks like
 
@@ -24,17 +28,16 @@ output, and changing them silently will be treated as a regression:
   at most ~1100px rendered width (about 57% of frame at 1080p).
 - **No background box.** White text, hard dark stroke, soft dark shadow.
 - **思源黑体 / Source Han Sans Bold** (bundled at `assets/NotoSansSC-Bold.ttf`).
-  Upright and heavy, with strong Latin glyphs — this video style is full of English
-  jargon set inside Chinese sentences, and a display face handles that badly.
-- **Movement technique names stay in English:** `lurch`, `tap-strafe`, `RAS`,
-  `Neo strafe`, `Pito strafe`, `Yuki`, `superglide`, `instaglide`, `bhop`,
-  `mantle boost`. Hero names use the official Simplified names (动力小子, 兰伯特,
-  导管 …). One settled exception: `wall jump` and `wall push` are both **蹬墙跳**.
+  Upright and heavy, with strong Latin glyphs — this style of video is full of
+  English jargon set inside Chinese sentences, and a display face handles that
+  badly.
+- **Jargon the community actually says in English stays in English.** Which terms
+  those are is a per-subject question, and it is what the glossaries answer.
 - **Burned-in chapter cards get a Chinese line underneath**, not on top.
 
 ## Workflow
 
-### 1. Probe the source, and read the glossary
+### 1. Probe the source, and pick a glossary
 
 ```bash
 ffprobe -v error -show_entries format=duration -show_entries stream=codec_type,codec_name,width,height,r_frame_rate -of default=nw=1 source.mp4
@@ -42,10 +45,18 @@ ffprobe -v error -show_entries format=duration -show_entries stream=codec_type,c
 
 Note duration and fps exactly — every later step depends on them.
 
-Read `references/glossary.md` before translating. It is the authority for term
-choices and carries a 字幕使用原则 section covering the conventions above. If a
-term is missing, research the correct Chinese name, use it, and tell the user so
-they can add it to the glossary.
+Then work out what the video is about and read `references/glossaries/README.md`,
+which routes to the right file and says which of its sections to read. Read the
+matched glossary's `字幕使用原则` section in full before translating — it is short,
+and it is where the conventions for that game live.
+
+Bundled: Apex Legends, Warframe, osu!, Minecraft 速通/MCSR.
+
+**If there is no glossary for this video, that is the normal case.** Translate
+against verifiable official Simplified names, keep a list of the terms you had to
+decide on, and hand that list over at the end. If a term has no official Chinese
+name, use a descriptive translation and say that it is not official — do not
+present a guess as settled. Never invent a name for something that already has one.
 
 ### 2. Get an English transcript with timings
 
@@ -54,10 +65,13 @@ If the video came from YouTube, its auto-captions are a usable base:
 captions with word-level timing tags, so de-duplicate them into sentence segments.
 
 **Auto-captions mangle jargon badly and you must repair it while translating.**
-Real examples from this exact video style: "forward rez/raft/raz" → `RAS`,
-"Neor strafe" → `Neo strafe`, "pedo strafe" → `Pito strafe`, "mantel boost" →
-mantle boost, "alerts" → lurches, "my VO was so high" → my velo (velocity),
-"I couldn't attach out of that" → couldn't tap-strafe out of that.
+ASR transcribes phonetically against a general-English model, so every domain
+term that is not a common word comes back as a plausible wrong word. Real
+examples from Apex movement footage: "forward rez/raft/raz" → `RAS`, "Neor
+strafe" → `Neo strafe`, "pedo strafe" → `Pito strafe`, "mantel boost" → mantle
+boost, "alerts" → lurches, "my VO was so high" → my velo (velocity), "I couldn't
+attach out of that" → couldn't tap-strafe out of that. Expect the same class of
+damage in any jargon-dense video — the glossary is what lets you recognise it.
 
 Where speech is genuinely unrecoverable — music stings, overlapping shouting —
 leave `zh` empty for that segment so it is dropped, and tell the user which
@@ -104,6 +118,11 @@ of the creator's socials. Extract a frame, find the gap, and declare it:
 ```json
 [{"from": 1334.0, "to": 100000, "bottom": 820}]
 ```
+
+The default caption band sits above a typical FPS HUD. A different game, or
+non-gaming footage, may put its own elements there — a MOBA minimap, a rhythm
+game's judgement line, a talk's lower third. Extract a frame and look before
+accepting the default.
 
 ### 7. Build the overlay and encode
 
@@ -152,10 +171,17 @@ original first-person description implies authorship, and that music attribution
 blocks should stay in their original English because the licence requires that
 exact form.
 
+If you had to settle terms that were not in a glossary, list them. A term decided
+once and written down is worth more than the same decision made differently next
+time; `references/glossaries/README.md` says how to turn a list like that into a
+glossary file.
+
 ## Reference material
 
-- `references/glossary.md` — the Apex EN→ZH glossary. Large; read the
-  字幕使用原则 section and the sections relevant to the video's subject.
+- `references/glossaries/README.md` — which glossary to read, which sections of
+  it, and what to do when the video has none. Start here.
+- `references/glossaries/*.md` — the glossaries themselves. Large. Read the
+  principles section and the relevant sections; grep for individual terms.
 - `references/pipeline.md` — technical notes and the specific traps in this
   pipeline. Read it before debugging anything that looks like a timing, splice,
   or rendering problem; most of them have already been diagnosed once.
