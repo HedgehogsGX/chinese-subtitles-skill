@@ -1,6 +1,6 @@
 ---
 name: video-chinese-subtitles
-description: Translate any English video into Simplified Chinese and burn the captions into it. Covers glossary-consistent translation, one-line caption timing, stroked white captions with no background box, burned-in chapter-card translation, full encode, and cheap targeted re-encode when only a few lines change. Bundles EN→中文 glossaries for Apex Legends, Warframe, osu! and Minecraft speedrun/MCSR, and works on non-gaming video too — talks, vlogs, tutorials, documentaries. Use this whenever the user wants Chinese subtitles or 中文字幕 on a video, wants captions burned/hardcoded into an MP4, has a gameplay video that needs translating, asks to fix or restyle subtitles on a video they already have, or mentions 身法/lurch/tap-strafe translation — even if they do not name this skill and even if they only ask for "subtitles" generally. Does NOT download video; the source file must already exist locally.
+description: Translate any English video into Simplified Chinese and burn the captions into it. Covers glossary-consistent translation, one-line caption timing, stroked white captions with no background box, burned-in chapter-card translation, full encode, and cheap targeted re-encode when only a few lines change. Bundles EN→中文 glossaries for Apex Legends, Warframe, osu!, Minecraft speedrun/MCSR and StarCraft (SC2 and Brood War), and works on non-gaming video too — talks, vlogs, tutorials, documentaries. Use this whenever the user wants Chinese subtitles or 中文字幕 on a video, wants captions burned/hardcoded into an MP4, has a gameplay video that needs translating, asks to fix or restyle subtitles on a video they already have, or mentions 身法/lurch/tap-strafe translation — even if they do not name this skill and even if they only ask for "subtitles" generally. Does NOT download video; the source file must already exist locally.
 ---
 
 # 视频中文字幕 — translate and burn in
@@ -50,7 +50,7 @@ which routes to the right file and says which of its sections to read. Read the
 matched glossary's `字幕使用原则` section in full before translating — it is short,
 and it is where the conventions for that game live.
 
-Bundled: Apex Legends, Warframe, osu!, Minecraft 速通/MCSR.
+Bundled: Apex Legends, Warframe, osu!, Minecraft 速通/MCSR, StarCraft 星际争霸.
 
 **If there is no glossary for this video, that is the normal case.** Translate
 against verifiable official Simplified names, keep a list of the terms you had to
