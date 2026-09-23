@@ -27,6 +27,7 @@ grep -n "tap-strafe" references/glossaries/apex.md
 | Warframe | `warframe.md` | 3,844 | 国际服，更新 43 | 2026-07-28 |
 | osu! | `osu.md` | 429 | 四个模式 + lazer/stable | 2026-07-26 |
 | Minecraft 速通 / MCSR | `minecraft-mcsr.md` | 358 | 1.16.1 RSG + MCSR Ranked | 2026-09-21 |
+| StarCraft / 星际争霸 | `starcraft.md` | 761 | 星际2 虚空之遗天梯（5.0 版本线）+ 母巢之战 | 2026-09-22 |
 
 ## Which sections to read
 
@@ -54,6 +55,15 @@ the run structure, and whichever of §4–8 the video covers. §13 is the misrea
 list, and `fortress` / `stronghold` is the single highest-frequency error in the
 whole file.
 
+**`starcraft.md`** — read the warning at the top first: StarCraft has three
+competing sets of Chinese names (current SC2 official, the old Aomei Brood War
+localisation, and caster slang), and 字幕使用原则 2–3 say which one a given
+video gets. Then the unit, building and ability sections for the races on
+screen — §3–5 Terran, §6–8 Zerg, §9–11 Protoss — and §15 for build orders and
+strategies. A Brood War video goes to §12 instead. §20 is the misreading list;
+`storm` (闪电, never 风暴) and `Marauder` (劫掠者, never 掠夺者) are the two that
+catch translators every time.
+
 ## When the video has no glossary here
 
 Most videos will not. That is the normal case, not a failure:
@@ -71,7 +81,7 @@ a descriptive translation and say in your handoff that it is not an official nam
 ## Adding a glossary
 
 Drop a `<game>.md` file in this directory and add a row to the table above. The
-four existing files share a shape worth copying, because it is what makes them
+five existing files share a shape worth copying, because it is what makes them
 usable mid-translation rather than only as reading:
 
 - YAML frontmatter with `source_scope` and `updated` — scope matters because
@@ -86,6 +96,6 @@ usable mid-translation rather than only as reading:
 - A sources section, separating official from community, so a later reader can
   tell which rows are authoritative and which are observed usage.
 
-These four came from `HedgehogGX's Vault/Atlas/`. When a glossary is updated
+These five came from `HedgehogGX's Vault/Atlas/`. When a glossary is updated
 there, copy it here again — this directory is the published copy, not the
 working one.

@@ -12,7 +12,7 @@ glossary.
 
 - Translates against a bundled per-game EN→中文 glossary — **Apex Legends**
   (1,217 rows), **Warframe** (3,844), **osu!** (429), **Minecraft 速通/MCSR**
-  (358) — each with its own 字幕使用原则 conventions for which jargon stays in
+  (358), **StarCraft 星际争霸** (761) — each with its own 字幕使用原则 conventions for which jargon stays in
   English and which official Simplified name to use
 - Handles video with no glossary too: talks, vlogs, tutorials, other games. It
   translates against verifiable official names and hands back the list of terms
@@ -56,6 +56,7 @@ references/glossaries/
   warframe.md                    Warframe, 国际服 update 43
   osu.md                         osu! — standard, mania, taiko, catch
   minecraft-mcsr.md              Minecraft 速通 1.16.1 RSG + MCSR Ranked
+  starcraft.md                   星际争霸 — SC2 虚空之遗 ladder + Brood War
 references/pipeline.md           known traps: drift, splice arithmetic, term splitting
 assets/NotoSansSC-Bold.ttf       思源黑体 Bold (static instance)
 scripts/
@@ -71,7 +72,7 @@ scripts/
 ## Adding a glossary
 
 Drop a `<game>.md` file in `references/glossaries/` and add a row to the table in
-its README. The existing four share a shape — a `字幕使用原则` section, term tables
+its README. The existing five share a shape — a `字幕使用原则` section, term tables
 with **英文或缩写 | 字幕首选 | 中文社区常见说法 | 说明**, and a 最容易误译的词 list —
 and that shape is what makes them usable while translating rather than only as
 reading. `references/glossaries/README.md` has the full convention.
