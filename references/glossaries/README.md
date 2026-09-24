@@ -23,7 +23,7 @@ grep -n "tap-strafe" references/glossaries/apex.md
 
 | Game | File | Rows | Scope as written | Last verified |
 |---|---|---|---|---|
-| Apex Legends | `apex.md` | 1,217 | 国际版，赛季 29「超频风暴」 | 2026-08-17 |
+| Apex Legends | `apex.md` | 1,220 | 国际版，赛季 29「超频风暴」 | 2026-09-24 |
 | Warframe | `warframe.md` | 3,844 | 国际服，更新 43 | 2026-07-28 |
 | osu! | `osu.md` | 429 | 四个模式 + lazer/stable | 2026-07-26 |
 | Minecraft 速通 / MCSR | `minecraft-mcsr.md` | 358 | 1.16.1 RSG + MCSR Ranked | 2026-09-21 |
