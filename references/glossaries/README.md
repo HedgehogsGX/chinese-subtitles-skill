@@ -28,6 +28,8 @@ grep -n "tap-strafe" references/glossaries/apex.md
 | osu! | `osu.md` | 429 | 四个模式 + lazer/stable | 2026-07-26 |
 | Minecraft 速通 / MCSR | `minecraft-mcsr.md` | 358 | 1.16.1 RSG + MCSR Ranked | 2026-09-21 |
 | StarCraft / 星际争霸 | `starcraft.md` | 761 | 星际2 虚空之遗天梯（5.0 版本线）+ 母巢之战 | 2026-09-22 |
+| Counter-Strike / 反恐精英 | `counter-strike.md` | 884 | CS2 国际服 + 完美国服差异，9 张图逐点报点 | 2026-09-23 |
+| ARC Raiders | `arc-raiders.md` | 1,069 | 简中客户端 1.47.0，6 张图全部官方地点名 | 2026-09-23 |
 
 ## Which sections to read
 
@@ -64,6 +66,23 @@ strategies. A Brood War video goes to §12 instead. §20 is the misreading list;
 `storm` (闪电, never 风暴) and `Marauder` (劫掠者, never 掠夺者) are the two that
 catch translators every time.
 
+**`counter-strike.md`** — read the warning at the top: Valve's official Simplified
+names, Perfect World's 国服 overrides (T阵营, 精准打击), and the community layer,
+which is the only one usable for callouts. For any match, POV or tutorial video
+§9 is the section that matters: one table per map, covering the seven Active Duty
+maps plus Overpass and Train. Find the map first — Short, Heaven, Window and
+Connector are different spots on different maps. §4–5 for weapons and utility,
+§6–7 for aim and tactics jargon, §12 for skins, §14 for the misreading list.
+`headshot` is 爆头, never the 国服 精准打击.
+
+**`arc-raiders.md`** — every 字幕首选 comes from the game client's own Simplified
+Chinese strings, so never translate a name the client already has. Read 字幕使用原则,
+then §6 for places (every official location on all six maps, plus extraction
+points) and §7 for ARC machines. §8–11 for weapons and items, §12 for the skill
+tree, §15 for the misreading list: Topside is 上层, Raider is 奇袭者, and several
+weapon names circulating online (琶音, 叛徒, 均衡器) are Traditional-client or fan
+names, not the Simplified client's.
+
 ## When the video has no glossary here
 
 Most videos will not. That is the normal case, not a failure:
@@ -81,7 +100,7 @@ a descriptive translation and say in your handoff that it is not an official nam
 ## Adding a glossary
 
 Drop a `<game>.md` file in this directory and add a row to the table above. The
-five existing files share a shape worth copying, because it is what makes them
+seven existing files share a shape worth copying, because it is what makes them
 usable mid-translation rather than only as reading:
 
 - YAML frontmatter with `source_scope` and `updated` — scope matters because
@@ -96,6 +115,6 @@ usable mid-translation rather than only as reading:
 - A sources section, separating official from community, so a later reader can
   tell which rows are authoritative and which are observed usage.
 
-These five came from `HedgehogGX's Vault/Atlas/`. When a glossary is updated
+These seven came from `HedgehogGX's Vault/Atlas/`. When a glossary is updated
 there, copy it here again — this directory is the published copy, not the
 working one.
