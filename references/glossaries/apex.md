@@ -10,7 +10,7 @@ tags:
   - subtitles
   - movement
 created: 2026-07-23
-updated: 2026-08-17
+updated: 2026-09-24
 language: zh-CN
 source_scope: Apex Legends 国际版本，赛季 29（超频风暴）
 ---
@@ -799,6 +799,9 @@ source_scope: Apex Legends 国际版本，赛季 29（超频风暴）
 | ping | 标记／延迟 | 标点、ping | 必须根据语境判断。 |
 | enemy here | 这里有敌人 | 这里有人 | — |
 | on me | 敌人在我这里 | 我脸上、贴我 | 不是“在我身上”的字面意思。 |
+| I'm knocked / I'm down | 我被击倒了 | 我倒了、倒地了 | 过去分词 `knocked` = 被击倒：报告说话者自己倒地。 |
+| I'm knocking | 我在举盾 | 举盾 | 进行时 `knocking` 表示正在举盾，不是“被击倒”；与 `I'm knocked` 区分。 |
+| give me knock / give me knocked | 帮我举盾 | 举盾 | 请求口令，不是报告倒地；与 `I'm knocked`（被击倒）、`I'm knocking`（我在举盾）区分。自动字幕常误识为 give me back。 |
 | behind us | 后面有人 | 屁股有人 | — |
 | above / below | 上方／下方 | 楼上、楼下 | — |
 | close / close range | 近处／近距离 | 贴脸、近点 | — |
@@ -1408,6 +1411,8 @@ source_scope: Apex Legends 国际版本，赛季 29（超频风暴）
 | legend | 传说故事 | 指可操作角色时写“英雄／传奇”。 |
 | legendary | 传奇人物 | 装饰品或物资语境是“传奇稀有度”。 |
 | knock | 敲门 | 战斗中是“击倒”。 |
+| give me knock | 我倒了／退回来 | 是请求“帮我举盾”，不是报告倒地；`I'm knocked` 才是“被击倒”。自动字幕常把它听成 give me back。 |
+| knocking | 被击倒／我倒了 | 进行时 `I'm knocking` 是“我在举盾”；只有 `knocked` 才是“被击倒”。 |
 | finish | 完成 | 对倒地敌人通常是“补掉／处决”。 |
 | reset | 重置游戏 | 战斗中是补状态、扶人并重新组织。 |
 | swap | 交换 | `armor swap` 是“换甲”。 |
