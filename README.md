@@ -20,7 +20,8 @@ glossary.
   translates against verifiable official names and hands back the list of terms
   it had to settle, which is the seed of the next glossary
 - Builds a **one-line-only** SRT — long lines are split into sequential cues, never
-  wrapped — with no overlaps and nothing too fast or too brief to read
+  wrapped — with no full stops (。), no overlaps and nothing too fast or too
+  brief to read
 - Renders captions as white text with a dark stroke and soft shadow, **no
   background box**, in 思源黑体 / Source Han Sans Bold
 - Finds chapter cards that are burned into the video (not YouTube chapter markers)

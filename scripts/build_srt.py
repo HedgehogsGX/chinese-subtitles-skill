@@ -30,6 +30,10 @@ Why each pass exists - these are failure modes that actually happened, not theor
    across two cues ("...怎么把 Neo" / "strafe 接成前向 bhop"). Splitting happens
    after merging, so merging is deliberately not width-capped: a merge that makes
    a line too long simply gets re-split at a better boundary.
+
+4. PERIODS. Captions carry no 。. This runs after splitting so 。 still serves as
+   the preferred split point; whatever survives mid-line becomes a space, and a
+   trailing one is dropped.
 """
 import argparse, json, re, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -55,6 +59,12 @@ def join_zh(a, b):
     if re.search(r"[一-鿿]$", a) and re.match(r"^[A-Za-z0-9]", b):
         return a + " " + b
     return a + b
+
+
+def drop_periods(t):
+    """No 。 in a caption: a mid-line one becomes a space, a trailing one goes."""
+    t = re.sub(r"\s*[。．]+\s*", " ", t).strip()
+    return re.sub(r"(?<!\.)\.$", "", t).strip()
 
 
 def best_split(t):
@@ -144,6 +154,10 @@ def build(segments, font, size=54, variation=None, maxw=1100,
         for p in pieces:
             p.append(gid)          # provenance: which original cue this came from
         out.extend(pieces)
+    # --- pass 4: no full stops ---------------------------------------------
+    for p in out:
+        p[2] = drop_periods(p[2])
+    out = [p for p in out if p[2]]
     for i in range(len(out) - 1):
         if out[i][1] > out[i + 1][0] - 0.01:
             out[i][1] = out[i + 1][0] - 0.01

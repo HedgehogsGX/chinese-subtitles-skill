@@ -26,6 +26,9 @@ output, and changing them silently will be treated as a regression:
   wrapping. `build_srt.py` enforces this.
 - **Captions are short.** "One line" is not licence for a very wide line. Target
   at most ~1100px rendered width (about 57% of frame at 1080p).
+- **No full stops.** No 。 anywhere in a caption: drop a trailing one, and where
+  two sentences share a line, separate them with a space. Commas, question and
+  exclamation marks stay. `build_srt.py` enforces this.
 - **No background box.** White text, hard dark stroke, soft dark shadow.
 - **思源黑体 / Source Han Sans Bold** (bundled at `assets/NotoSansSC-Bold.ttf`).
   Upright and heavy, with strong Latin glyphs — this style of video is full of
