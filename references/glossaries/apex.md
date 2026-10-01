@@ -202,7 +202,7 @@ source_scope: Apex Legends 国际版本，赛季 29（超频风暴）
 | counter-strafe                     | 反向制动       | 反拉、急停             | 用反方向输入快速改变移动。     |
 | bunny hop / bhop                   | 连续跳／兔子跳    | 兔跳、bhop           | 保持部分速度连续跳跃。       |
 | healing bhop                       | 治疗兔跳       | 打药兔跳              | 治疗时用连续跳维持移动。      |
-| quick bhop                         | 快速兔跳       | 快兔跳               | 艾瑟儿氮速门等高速状态中的衔接。  |
+| quick bhop                         | 快速兔跳       | 快兔跳               | 艾克塞尔氮速门等高速状态中的衔接。 |
 | holster                            | 收起武器       | 收枪、空手             | 收枪通常提高跑速。         |
 | draw / unholster                   | 掏出武器       | 掏枪                | —                 |
 | weapon swap                        | 切换武器       | 切枪                | —                 |
@@ -320,8 +320,8 @@ source_scope: Apex Legends 国际版本，赛季 29（超频风暴）
 | VTOL Jets | 垂直起降喷射器 | 喷气背包、被动 | 瓦尔基里被动。 |
 | Shadow Pounce | 暗影突袭 | 亡灵跳、蓄力跳 | 亡灵战术技能。 |
 | Void Passage | 虚空通道 | 穿墙门、Q | 变幻战术技能。 |
-| Nitro Gate | 氮速门 | 加速门、Q | 艾瑟儿战术技能。 |
-| Drift | 甩尾 | 漂移、被动 | 艾瑟儿被动；提升滑行速度与横向控制。 |
+| Nitro Gate | 氮速门 | 加速门、Q | 艾克塞尔战术技能。 |
+| Drift | 甩尾 | 漂移、被动 | 艾克塞尔被动；提升滑行速度与横向控制。 |
 | Spacewalk | 太空漫步 | 软着陆、地平线被动 | 提升空中控制并减轻落地硬直。 |
 | Double Jump (Sparrow) | 二连跳 | 雀影二跳 | 雀影被动。 |
 | punch boost | 拳击加速 | 拳加速 | 已移除的下坡近战加速技巧。 |
@@ -468,7 +468,7 @@ source_scope: Apex Legends 国际版本，赛季 29（超频风暴）
 | Conduit | 导管 | 电妹、Conduit | 支援。 |
 | Alter | 变幻 | Alter | 散兵。 |
 | Sparrow | 雀影 | 麻雀、Sparrow | 侦察；官方中文名“雀影”。 |
-| Axle | 艾瑟儿 | Axle、赛车妹 | 散兵；赛季 29 新英雄。 |
+| Axle | 艾克塞尔 | Axle、赛车妹 | 散兵；赛季 29 新英雄。 |
 
 ### 英雄技能名
 
@@ -555,9 +555,9 @@ source_scope: Apex Legends 国际版本，赛季 29（超频风暴）
 | Double Jump | 二连跳 | 二跳、雀影被动 | 雀影被动。 |
 | Tracker Dart | 追踪器飞镖 | 扫描箭、Q | 雀影战术。 |
 | Stinger Bolt | 毒刺矢 | 大箭、雀影大 | 雀影绝招。 |
-| Drift | 甩尾 | 漂移、艾瑟儿被动 | 艾瑟儿被动。 |
-| Nitro Gate | 氮速门 | 加速门、Q | 艾瑟儿战术。 |
-| Kickstart | 弹射起步 | 追踪无人机、艾瑟儿大 | 艾瑟儿绝招。 |
+| Drift | 甩尾 | 漂移、艾克塞尔被动 | 艾克塞尔被动。 |
+| Nitro Gate | 氮速门 | 加速门、Q | 艾克塞尔战术。 |
+| Kickstart | 弹射起步 | 追踪无人机、艾克塞尔大 | 艾克塞尔绝招。 |
 
 ## 6. 武器、弹药与配件
 
