@@ -159,14 +159,39 @@ Encoding runs about 1.2–1.7x realtime at preset fast on Apple silicon.
   by default in PIL. Either call `set_variation_by_name('Bold')` or bake a static
   instance with `fontTools.varLib.instancer`. The bundled asset is already static.
 
-## If you need YouTube auto-captions
+## Downloading
 
-Out of scope for this skill, but for reference: modern yt-dlp needs a JavaScript
-runtime or YouTube returns 403 and drops formats. Point it at Node:
+`fetch.py` handles all of this; the notes are for when it misbehaves.
 
-```bash
-yt-dlp --js-runtimes node --write-auto-subs --sub-langs "en.*" --skip-download URL
-```
+**JavaScript runtime.** Modern yt-dlp needs one or YouTube returns 403 and drops
+formats. Deno is its default; `fetch.py` passes `--js-runtimes node` (or bun) when
+Deno is missing. Without any you get `No supported JavaScript runtime could be
+found`, throttled speeds, and resumes that fail with 403.
 
-Without it you get `No supported JavaScript runtime could be found`, throttled
-speeds, and resumes that fail with 403.
+**"Sign in to confirm you're not a bot."** YouTube's bot check, triggered by
+request volume from one IP. It has appeared on the second lookup in a minute. This
+is why `fetch.py` extracts once with `-J` and downloads from the saved JSON via
+`--load-info-json` instead of letting yt-dlp extract twice. If it still appears,
+`--cookies-from-browser <browser>` gets past it, but it reads the user's browser
+login, so ask first.
+
+**Why the format is pinned.** `-f "bv*+ba[ext=m4a]/bv*+ba/b" -S
+"res:1080,vcodec:h264"` resolves to 1080p H.264 plus AAC (e.g. YouTube formats
+137+140, or 299+140 at 60 fps) when they exist. Every stage draws on a fixed 1920x1080 frame, so a 4K or
+720p file would put captions in the wrong place. AAC matters for `splice.py`: it
+re-encodes its middle piece to AAC and joins all three pieces with stream copy,
+which fails if the head and tail carry Opus.
+
+**Which caption track.** A creator-uploaded `en` track beats ASR. Among ASR
+tracks, `en-orig` is recognition of the actual audio; a bare `en` without
+`en-orig` is usually machine-translated from another spoken language.
+`--sub-langs "en.*"` grabs `en`, `en-orig` and any regional tracks at once and
+leaves you to work out which is real; `fetch.py` picks one from the metadata
+first and requests only that.
+
+**Playlist links.** A watch URL carrying `&list=` downloads the whole playlist
+unless `--no-playlist` is set. `fetch.py` sets it.
+
+**Quote the URL.** In zsh an unquoted `?` is a glob, so `fetch.py
+https://www.youtube.com/watch?v=…` dies with `no matches found` before Python
+even runs.
