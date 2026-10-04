@@ -19,10 +19,15 @@ seam. Instead: cut head and tail first, count their frames, and derive the middl
 as whatever is left over. head + mid + tail must equal the original frame count
 exactly - the script refuses to continue if it does not.
 
+Frames become seconds through the frame rate, so it must be the file's real one.
+--fps defaults to what ffprobe reports for the current file (e.g. 30000/1001). A
+fixed 60 would put the middle window at half its true time on a 30 fps video.
+
 After splicing, verify two things: the frame count still matches, and the audio
 has no silent window at either seam (see verify.py).
 """
 import argparse, json, os, subprocess, sys, tempfile
+from fractions import Fraction
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -52,7 +57,7 @@ def main():
     ap.add_argument("--change-from", type=float, required=True)
     ap.add_argument("--change-to", type=float, required=True)
     ap.add_argument("--duration", type=float, required=True)
-    ap.add_argument("--fps", type=int, default=60)
+    ap.add_argument("--fps", default=None, help="default: the current file's own rate")
     ap.add_argument("--crf", type=int, default=20)
     ap.add_argument("--preset", default="fast")
     ap.add_argument("--chapters", default=None)
@@ -60,6 +65,7 @@ def main():
     ap.add_argument("--variation", default=None)
     ap.add_argument("--ffmpeg", default="ffmpeg")
     a = ap.parse_args()
+    fps = Fraction(a.fps or probe(a.current, "v:0", "stream=r_frame_rate"))
 
     total = int(probe(a.current, "v:0", "stream=nb_frames"))
     print(f"current file: {total} frames")
@@ -87,8 +93,8 @@ def main():
     mf = total - hf - tf
     if mf <= 0:
         sys.exit(f"frame arithmetic failed: head {hf} + tail {tf} >= total {total}")
-    head_end = hf / a.fps
-    mid_end = (hf + mf) / a.fps
+    head_end = float(hf / fps)
+    mid_end = float((hf + mf) / fps)
     print(f"head {hf}  mid {mf}  tail {tf}  -> mid window {head_end:.6f}..{mid_end:.6f}")
 
     ovdir = os.path.join(tmp, "ov")
@@ -104,7 +110,7 @@ def main():
          "-ss", f"{head_end:.6f}", "-i", a.source,
          "-f", "concat", "-safe", "0", "-i", os.path.join(ovdir, "concat.txt"),
          "-filter_complex",
-         f"[1:v]format=rgba,fps={a.fps}[ov];[0:v][ov]overlay=0:0:eof_action=pass[v]",
+         f"[1:v]format=rgba,fps={fps}[ov];[0:v][ov]overlay=0:0:eof_action=pass[v]",
          "-map", "[v]", "-map", "0:a", "-frames:v", str(mf),
          "-c:v", "libx264", "-crf", str(a.crf), "-preset", a.preset,
          "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", mid, "-y"])

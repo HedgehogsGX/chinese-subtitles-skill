@@ -1,7 +1,7 @@
 # video-chinese-subtitles
 
-A [Claude Code](https://claude.com/claude-code) skill that translates an English
-video into Simplified Chinese and burns the captions into it.
+A [Claude Code](https://claude.com/claude-code) skill that takes a video link,
+translates the video into Simplified Chinese and burns the captions into it.
 
 Built from a real 22-minute Apex Legends burn-in, so the defaults are ones that
 survived iteration rather than guesses. The pipeline itself is subject-agnostic —
@@ -10,6 +10,10 @@ glossary.
 
 ## What it does
 
+- Downloads the video from a link (YouTube, or anything
+  [yt-dlp](https://github.com/yt-dlp/yt-dlp) supports) at 1080p, along with the
+  best English caption track, the title, the description and the cover. A local
+  file works too.
 - Translates against a bundled per-game EN→中文 glossary — **Apex Legends**
   (1,217 rows), **Warframe** (3,844), **osu!** (429), **Minecraft 速通/MCSR**
   (358), **StarCraft 星际争霸** (761), **Counter-Strike 反恐精英** (884, with
@@ -30,8 +34,9 @@ glossary.
   as a HUD or an outro card
 - Encodes the final file, and can re-encode **just the seconds that changed** when
   you fix a few lines later — about 15 seconds instead of 20 minutes
-
-Downloading video is out of scope. The source file must already exist locally.
+- Hands over four files side by side: the captioned MP4, the SRT, a TXT with the
+  **preferred Chinese title** and an **exact translation of the description**,
+  and the video's **cover** as a JPG
 
 ## Install
 
@@ -40,14 +45,16 @@ git clone https://github.com/HedgehogsGX/chinese-subtitles-skill.git \
   ~/.claude/skills/video-chinese-subtitles
 ```
 
-Then just ask Claude Code for Chinese subtitles on a video file — the skill
-triggers on its own.
+Then paste a video link into Claude Code and ask for Chinese subtitles — the
+skill triggers on its own.
 
 ## Requirements
 
 - `ffmpeg` (any build — **libass is not required**, which is the point; captions
   are rendered in PIL because the common macOS ffmpeg builds ship without it)
 - Python with `pillow` and `numpy`
+- `yt-dlp`, plus a JavaScript runtime for YouTube — Deno, or Node/Bun
+  (`fetch.py` picks whichever is installed)
 
 ## Layout
 
@@ -62,9 +69,10 @@ references/glossaries/
   starcraft.md                   星际争霸 — SC2 虚空之遗 ladder + Brood War
   counter-strike.md              反恐精英 — CS2, per-map callouts, 国服 differences
   arc-raiders.md                 ARC Raiders — client strings, every map location
-references/pipeline.md           known traps: drift, splice arithmetic, term splitting
+references/pipeline.md           known traps: downloads, drift, splice arithmetic, term splitting
 assets/NotoSansSC-Bold.ttf       思源黑体 Bold (static instance)
 scripts/
+  fetch.py                       link → 1080p source, English captions, title, description, cover
   build_srt.py                   translations → one-line timed SRT
   render.py                      stroked caption renderer
   build_overlay.py               SRT → timed transparent overlay track
@@ -85,6 +93,7 @@ reading. `references/glossaries/README.md` has the full convention.
 ## Using the scripts directly
 
 ```bash
+python scripts/fetch.py "https://www.youtube.com/watch?v=…" --outdir work
 python scripts/build_srt.py segments.json sub.srt --font assets/NotoSansSC-Bold.ttf
 python scripts/build_overlay.py sub.srt ov --font assets/NotoSansSC-Bold.ttf \
     --duration 1354.351 --chapters chapters.json --avoid avoid.json
