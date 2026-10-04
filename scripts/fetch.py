@@ -124,7 +124,6 @@ def main():
     a = ap.parse_args()
     sys.stdout.reconfigure(line_buffering=True)   # keep our lines in order with yt-dlp's
 
-    os.makedirs(a.outdir, exist_ok=True)
     base = os.path.join(a.outdir, "source")
     common = js_runtime() + ["--no-playlist"]
     if a.cookies_from_browser:
@@ -139,6 +138,7 @@ def main():
     if info.get("_type") == "playlist":
         sys.exit("that is a playlist link - give the link of a single video")
 
+    os.makedirs(a.outdir, exist_ok=True)
     info_path = base + ".info.json"
     with open(info_path, "w", encoding="utf-8") as f:
         json.dump(info, f, ensure_ascii=False)
