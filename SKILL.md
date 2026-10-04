@@ -1,14 +1,16 @@
 ---
 name: video-chinese-subtitles
-description: Translate any English video into Simplified Chinese and burn the captions into it. Covers glossary-consistent translation, one-line caption timing, stroked white captions with no background box, burned-in chapter-card translation, full encode, and cheap targeted re-encode when only a few lines change. Bundles EN→中文 glossaries for Apex Legends, Warframe, osu!, Minecraft speedrun/MCSR, StarCraft (SC2 and Brood War), Counter-Strike 2 (with per-map callouts) and ARC Raiders (with every map location), and works on non-gaming video too — talks, vlogs, tutorials, documentaries. Use this whenever the user wants Chinese subtitles or 中文字幕 on a video, wants captions burned/hardcoded into an MP4, has a gameplay video that needs translating, asks to fix or restyle subtitles on a video they already have, or mentions 身法/lurch/tap-strafe translation — even if they do not name this skill and even if they only ask for "subtitles" generally. Does NOT download video; the source file must already exist locally.
+description: Translate any English video into Simplified Chinese and burn the captions into it, starting from nothing more than a link (YouTube, or anything yt-dlp supports) or a file already on disk. Downloads the video, its English captions and its description; covers glossary-consistent translation, one-line caption timing, stroked white captions with no background box, burned-in chapter-card translation, full encode, and cheap targeted re-encode when only a few lines change; delivers the captioned MP4, an SRT, a TXT with the preferred Chinese title and an exact translation of the video's description, and the video's cover image. Bundles EN→中文 glossaries for Apex Legends, Warframe, osu!, Minecraft speedrun/MCSR, StarCraft (SC2 and Brood War), Counter-Strike 2 (with per-map callouts) and ARC Raiders (with every map location), and works on non-gaming video too — talks, vlogs, tutorials, documentaries. Use this whenever the user pastes a video link and wants it in Chinese, wants Chinese subtitles or 中文字幕 on a video, wants captions burned/hardcoded into an MP4, wants a video translated for reposting, has a gameplay video that needs translating, asks to fix or restyle subtitles on a video they already have, or mentions 身法/lurch/tap-strafe translation — even if they do not name this skill and even if they only ask for "subtitles" generally.
 ---
 
 # 视频中文字幕 — translate and burn in
 
-Takes an English video that already exists on disk and produces a
-Simplified-Chinese hardcoded version, plus a matching SRT.
+Takes a video link, or an English video already on disk, and produces a
+Simplified-Chinese hardcoded version. Four files are handed over: the captioned
+MP4, a matching SRT, a TXT with the Chinese title and description, and the cover.
 
-Downloading is deliberately out of scope. Assume the source MP4 is already there.
+A bare link is a complete request. Download, translate, encode and deliver all
+four files without asking for the file or for permission to download it.
 
 The pipeline is subject-agnostic — it was built on a 22-minute Apex movement
 video, but nothing in the scripts knows or cares what the footage is. What
@@ -40,13 +42,40 @@ output, and changing them silently will be treated as a regression:
 
 ## Workflow
 
-### 1. Probe the source, and pick a glossary
+### 1. Get the source, and pick a glossary
+
+From a link, work in a folder of its own:
+
+```bash
+python scripts/fetch.py "<url>" --outdir <work-dir>
+```
+
+Always quote the URL — unquoted, zsh treats the `?` in a YouTube link as a glob.
+This writes `source.mp4`, `source.en.vtt` (English captions), `source.jpg` (the
+cover), `source.info.json`, `title.en.txt` and `description.en.txt`, and prints
+the size, fps, duration and frame count of the video and which caption track it
+took.
+
+The download is pinned to 1920x1080 H.264 with AAC audio, not "best": the overlay
+is drawn for exactly that frame, and `splice.py` joins audio by stream copy. A
+16:9 video that only exists smaller is upscaled. If `fetch.py` exits with
+`PROBLEM: source is …, not 16:9` (vertical, ultrawide, 4:3), stop and ask the user
+whether to pad it to 1920x1080 — a caption drawn for 1920x1080 lands off-frame.
+
+If yt-dlp answers "Sign in to confirm you're not a bot", or the video is
+age-restricted or members-only, ask the user before re-running with
+`--cookies-from-browser chrome` (or their browser): it reads their logged-in
+browser session. Do not reach for cookies unasked.
+
+If the user gave a file rather than a link, probe it instead, and if they have the
+link too, run `fetch.py "<url>" --no-video` to get the captions, title,
+description and cover without downloading the video again:
 
 ```bash
 ffprobe -v error -show_entries format=duration -show_entries stream=codec_type,codec_name,width,height,r_frame_rate -of default=nw=1 source.mp4
 ```
 
-Note duration and fps exactly — every later step depends on them.
+Either way, note duration and frame count exactly — later steps depend on them.
 
 Then work out what the video is about and read `references/glossaries/README.md`,
 which routes to the right file and says which of its sections to read. Read the
@@ -64,9 +93,13 @@ present a guess as settled. Never invent a name for something that already has o
 
 ### 2. Get an English transcript with timings
 
-If the video came from YouTube, its auto-captions are a usable base:
-`yt-dlp --write-auto-subs --sub-langs "en.*" --skip-download`. They are rolling
-captions with word-level timing tags, so de-duplicate them into sentence segments.
+`fetch.py` saved the best English track as `source.en.vtt` and said which kind it
+is. A creator-uploaded track is cue-based and usually has the jargon right. A
+YouTube ASR track is a usable base, but it is rolling captions with word-level
+timing tags, so de-duplicate it into sentence segments.
+
+If there is no English track at all, tell the user before going further: the
+video may not be in English, or it needs transcribing first.
 
 **Auto-captions mangle jargon badly and you must repair it while translating.**
 ASR transcribes phonetically against a general-English model, so every domain
@@ -142,7 +175,46 @@ Before committing to a ~20 minute encode, composite one overlay PNG onto a real
 frame in PIL and look at it. It costs seconds and catches position and font
 mistakes that would otherwise surface 20 minutes later.
 
-### 8. Verify
+### 8. Write the title and description TXT while the encode runs
+
+`<name>.txt`, next to `<name>.mp4`, UTF-8, in exactly this shape:
+
+```
+【标题】
+<the preferred Chinese title>
+
+【简介】
+<the description, translated in full>
+```
+
+The title and the description are different jobs.
+
+**The title is the preferred one, singular** — the title you would actually
+publish, not a list of options and not a word-for-word gloss. Keep the original's
+hook and its claims; do not inflate it into clickbait it was not. Keep the
+creator's name, series name or episode number if the original has them. The
+glossary applies exactly as it does to the captions, so jargon the community says
+in English stays in English.
+
+**The description is an exact translation** of `description.en.txt` — translate
+from that file, not from memory of the page:
+
+- Every line, in order. Nothing summarised, merged, reordered, added or left out;
+  line breaks and blank lines stay where they are.
+- Kept verbatim: URLs, @handles, hashtags, email addresses, creator or discount
+  codes, and timestamps. The chapter name after a timestamp is translated, and
+  matches the chapter-card translation where both name the same chapter.
+- Music and licence attribution blocks stay in their original English, because the
+  licence requires that exact form.
+- Same glossary choices as the captions, and Simplified Chinese only.
+- Normal Chinese punctuation, 。 included — the no-full-stop rule is for captions.
+- An empty description becomes `（原视频无简介）` under `【简介】`.
+
+If the video is a repost, say in chat — not in the file — that a first-person
+description reads as the reposter's own words. The file stays an exact
+translation either way.
+
+### 9. Verify
 
 ```bash
 python scripts/verify.py out.mp4 --expect-frames <frames> \
@@ -152,7 +224,7 @@ python scripts/verify.py out.mp4 --expect-frames <frames> \
 Look at the sheet. Confirm: single lines, legible over bright frames, chapter
 lines under their cards, nothing colliding with HUD or outro text.
 
-### 9. Later fixes — splice, don't re-encode
+### 10. Later fixes — splice, don't re-encode
 
 When the user asks to change a few lines (they will), rebuild the SRT, diff it
 against the previous one to find which cues moved, then:
@@ -168,12 +240,20 @@ python scripts/verify.py out_fixed.mp4 --expect-frames <frames> --seams 310 316
 
 ## Deliverables
 
-Alongside `out.mp4`, hand over the SRT (dialogue plus chapter lines, merged and
-renumbered) so the captions can be edited later without redoing the work. Offer a
-Chinese title and description too — if the video is a repost, raise that the
-original first-person description implies authorship, and that music attribution
-blocks should stay in their original English because the licence requires that
-exact form.
+Four files side by side, sharing one base name — `<video-id>.zh` unless the
+user asks for something else:
+
+- `<name>.mp4` — the captioned video
+- `<name>.srt` — dialogue plus chapter lines, merged and renumbered, so the
+  captions can be edited later without redoing the work
+- `<name>.txt` — the preferred Chinese title and the exact translation of the
+  description (step 8)
+- `<name>.jpg` — the cover: `source.jpg`, the video's own thumbnail, unaltered.
+  A separate file, not embedded in the MP4 — upload forms take the cover on its
+  own. If `fetch.py` reported no cover, say so rather than grabbing a frame.
+
+Keep `source.mp4` and the work folder until the user is done asking for fixes —
+`splice.py` re-encodes from the source.
 
 If you had to settle terms that were not in a glossary, list them. A term decided
 once and written down is worth more than the same decision made differently next
@@ -187,5 +267,5 @@ glossary file.
 - `references/glossaries/*.md` — the glossaries themselves. Large. Read the
   principles section and the relevant sections; grep for individual terms.
 - `references/pipeline.md` — technical notes and the specific traps in this
-  pipeline. Read it before debugging anything that looks like a timing, splice,
-  or rendering problem; most of them have already been diagnosed once.
+  pipeline. Read it before debugging anything that looks like a download, timing,
+  splice, or rendering problem; most of them have already been diagnosed once.
