@@ -151,18 +151,130 @@ done
 diff rgba.md5 yuva420p.md5 && echo identical
 ```
 
-## Splicing: do the arithmetic in frames
+## Splicing: cut in packets, leave the audio alone
 
-`-t` and `-ss` with `-c copy` land on keyframe boundaries and rarely return
-exactly the time requested. Asking for "the segment from 310.0" and assuming you
-got it gives duplicated or missing frames at the seam.
+`splice.py` re-encodes only the video between two keyframes either side of the
+change and joins it to the untouched rest with stream copy. Until October 2026 it
+made every spliced file a little longer and left a glitch at each seam. On a 60 s
+1080p60 clip, one splice by the old script against one by the current one:
 
-Cut head and tail first, count their frames with ffprobe, and derive the middle as
-`total - head - tail`. Encode the middle with `-frames:v <that number>`. The three
-parts must sum to the original frame count exactly.
+| | video duration | audio | at the head→mid seam |
+|---|---|---|---|
+| before splicing | 60.0000 s | 60.0000 s, 2585 packets | — |
+| old, ffmpeg 9.0.2 | 60.0462 s, starting at 0.0232 | 60.0694 s, 2586 packets | two frames on one PTS, DTS going backwards |
+| old, ffmpeg 4.3.2 | +256 ms | | |
+| now, either build | 60.0000 s | 60.0000 s, packets byte-identical | clean |
 
-The pieces must also share codec parameters or `concat` will refuse or glitch —
-same H.264 profile, resolution, fps, and same audio sample rate and channel count.
+A real 1080p60 video spliced three times by the old script came out 133 ms long
+in video and 141–149 ms in audio, with short near-silent blips at some seams.
+Four separate causes:
+
+**`-t` with `-c copy` cuts on DTS, not PTS.** The head was cut with
+`-t <kf1> -c copy`. With x264's B-pyramid a frame's DTS runs two frames behind
+its PTS, so the IDR at kf1 (PTS 25.000, DTS 24.967) and the P-frame decoded after
+it (PTS 25.067, DTS 24.983) both passed the test and went into the head: 1502
+frames where 1500 belonged. The frame arithmetic then started the middle piece at
+frame 1502, so source frame 1501 was never shown, and the stray P-frame landed on
+the same PTS as one of the middle's frames. `ffmpeg -i out.mp4 -f null -` reports
+"non monotonically increasing dts" there, and a default (CFR) decode drops a
+frame; `-fps_mode passthrough` decodes them all.
+
+Now the current file's video packets are listed once with ffprobe (about 2 s for
+an hour of 1080p60), and the cuts go at keyframes no other frame displays across:
+nothing decoded before it is shown after it, and nothing decoded after it is
+shown before it. With x264's default closed GOPs that is every keyframe. The head
+is every packet before the kf1 IDR in decode order, the tail is the kf2 IDR
+onward, and head + mid + tail equals the original frame count by construction.
+
+**Re-encoding the audio added AAC priming at every seam.** The middle piece's
+audio was re-encoded to AAC, and ffmpeg's AAC encoder starts every stream with
+1024 samples of priming (23.2 ms at 44.1 kHz) that the MP4 marks to be skipped.
+The concat demuxer places each piece by its container start time, which counts
+that priming packet at −1024 samples, so everything after it moved 23 ms later,
+and the stream gained a packet. Captions never touch the audio, so the audio
+track is now copied whole from the current file, and the middle piece is
+video-only.
+
+**The ffmpeg CLI rebases each input to its own start.** Even with video-only
+pieces, the final command (`-f concat -i join.txt -i current.mp4`) shifted the
+video 357 ticks (23.2 ms) late: the concat input exposes the current file's audio
+stream too, its first packet is that −1024-sample priming packet, and ffmpeg
+subtracts each input's start time. `-copyts` keeps every packet on the timestamp
+it had in the current file.
+
+**The concat demuxer's `auto_convert` rewrites keyframes.** It is on by default
+and runs `h264_mp4toannexb`, which writes SPS/PPS in-band in front of every IDR:
+44 bytes more per keyframe, head and tail included. `splice.py` switches it off
+when the middle piece's SPS/PPS (the `avcC`) match the current file's, which they
+do when both were encoded with the same ffmpeg and preset. When they differ, for
+example with conda's 4.3.2 x264 against Homebrew's, or a full build made with
+`--preset medium`, it leaves it on. The MP4 keeps only the first piece's SPS/PPS,
+and the in-band copies are what let the middle decode.
+
+The join is one pass straight from the current file, so the head and tail are
+never written out as temporary files:
+
+```
+ffconcat version 1.0
+file '/abs/current.mp4'
+outpoint 24.958333     # half a frame before the kf1 IDR's DTS: outpoint compares DTS
+duration 25.000000     # kf1's PTS, so the middle starts exactly there
+file '/tmp/splice_x/mid.mp4'
+duration 12.500000     # kf2 - kf1
+file '/abs/current.mp4'
+inpoint 37.500000      # kf2's PTS rounded UP to the microsecond: the seek is
+                       # backward, and rounding down lands on the keyframe before
+```
+
+`outpoint` ends the file at the first packet of *any* stream at or past it, audio
+included. That is safe for files ffmpeg muxed, because they are interleaved in DTS
+order; the self-check below catches anything else.
+
+Three smaller traps:
+
+- **Seek the source half a frame early.** The middle is read from the source with
+  an accurate `-ss`. At 30000/1001, hf/fps printed to six decimals is a hair past
+  the frame (`8.341667` for 8.3416666…). ffmpeg 9.0.2 rounds that back onto the
+  frame in a 1/30000 time base, but a finer time base might not, and the whole
+  window would then show the next frame. `-ss (hf − ½)/fps` followed by
+  `setpts=PTS-STARTPTS` takes the right frame without depending on that.
+- **The B-frame delay must match.** Each piece's DTS runs a fixed number of
+  frames behind its PTS: 2 for x264's presets with B-pyramid, 0 for `ultrafast`.
+  If the middle's delay differs from the current file's, DTS goes backwards at one
+  of the seams whichever way round. `splice.py` refuses and asks for the full
+  build's `--preset`.
+- **Time base.** The middle is written with the current file's
+  `-video_track_timescale` (15360 at 60 fps), so ticks compare one for one.
+
+The script checks its own output before handing it over, against the current
+file: same frame count; head and tail packets identical (PTS, DTS, size, flags);
+the new frames on the window's timestamps; DTS rising at every packet; the same
+video start; audio packets identical. If any of it fails, the result is kept as
+`<out>.splice-failed.mp4` and `<out>` is not touched. The output is written beside
+`<out>` first, so splicing a file onto itself is safe.
+
+**Files already spliced by the old script.** They carry the damage above at each
+old seam. `verify.py --expect-frames N --seams … --reference source.mp4` shows it:
+overlapping frames and gaps in the timestamps, durations that differ from the
+source, and audio that lines up about 23 ms late. A new splice never moves
+anything outside its window, so a splice elsewhere leaves old damage as it is.
+A window that crosses an old seam replaces the bad frames, but those files'
+timestamps run longer than their frame count, so the new frames end before the
+old tail and the last one is held (46 ms in the test); `splice.py` warns when
+that happens. Only re-running `burn_in.py` repairs such a file completely.
+
+**Caption switches inside a window can move by a frame.** Not a splice bug, but
+it shows up when comparing a spliced window with a full build. The overlay track
+is a concat of PNGs, and the concat demuxer gives it the image stream's 1/25 s
+time base, so every caption boundary snaps to a 40 ms grid that starts where the
+track starts: 0.30 s becomes 0.32. A full build's track starts at 0; a splice's
+starts at the window, so a boundary near a frame's midpoint can round to a
+neighbouring frame. Both are within about 20 ms of the SRT. The window's frames
+themselves line up with a full re-burn exactly: per-frame PSNR against it never
+fell below 43 dB at offset 0, and dropped to 22 dB one frame either way.
+
+The pieces must still share resolution, pixel format and frame rate; the middle
+is encoded from the source at the current file's own rate.
 
 **The window needs the full build's placement flags.** `splice.py` rebuilds the
 overlay for its window by calling `build_overlay.py`, and every flag it does not
@@ -177,9 +289,27 @@ and `--avoid`; give it every one the full build had. (The old workaround, an
 overlay PNGs by hand after `build_overlay.py` — moving outro captions sideways,
 say — are not replayed by a splice at all.
 
-Verify after every splice:
+Verify after every splice, against the file you spliced:
+
+```bash
+python scripts/verify.py out_fixed.mp4 --expect-frames <frames> \
+    --seams <change-from> <change-to> --reference out.mp4
+```
+
 - frame count unchanged
-- no silent window at either seam (`verify.py --seams`)
+- timestamps clean: DTS rising, frames one frame apart, no gap or overlap. An
+  uneven source (variable frame rate) shows uneven frames here too; check the
+  source the same way before blaming the splice
+- durations equal to the reference's
+- audio packets around each seam identical to the reference's. Decoded samples
+  are no good for this: ffmpeg's AAC encoder uses perceptual noise substitution,
+  and the decoder's noise generator state depends on where each file's seek
+  landed, so identical packets decode slightly differently after a seek. When the
+  packets do differ, `verify.py` cross-correlates the decoded audio and reports
+  the offset.
+
+Without `--reference`, `--seams` only looks for a near-silent 50 ms window, which
+cannot tell a dropped AAC frame from a pause in speech.
 
 ## Sync between captions and video
 
@@ -241,9 +371,10 @@ login, so ask first.
 **Why the format is pinned.** `-f "bv*+ba[ext=m4a]/bv*+ba/b" -S
 "res:1080,vcodec:h264"` resolves to 1080p H.264 plus AAC (e.g. YouTube formats
 137+140, or 299+140 at 60 fps) when they exist. Every stage draws on a fixed 1920x1080 frame, so a 4K or
-720p file would put captions in the wrong place. AAC matters for `splice.py`: it
-re-encodes its middle piece to AAC and joins all three pieces with stream copy,
-which fails if the head and tail carry Opus.
+720p file would put captions in the wrong place. AAC because the audio is copied
+into the final MP4 untouched, and AAC is what every player and upload site
+accepts there. (`splice.py` used to re-encode a window of the audio to AAC and
+join it to Opus head and tail, which failed; it no longer touches the audio.)
 
 **Which caption track.** A creator-uploaded `en` track beats ASR. Among ASR
 tracks, `en-orig` is recognition of the actual audio; a bare `en` without

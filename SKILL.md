@@ -57,7 +57,7 @@ the size, fps, duration and frame count of the video and which caption track it
 took.
 
 The download is pinned to 1920x1080 H.264 with AAC audio, not "best": the overlay
-is drawn for exactly that frame, and `splice.py` joins audio by stream copy. A
+is drawn for exactly that frame, and the audio goes into the final MP4 untouched. A
 16:9 video that only exists smaller is upscaled. If `fetch.py` exits with
 `PROBLEM: source is …, not 16:9` (vertical, ultrawide, 4:3), stop and ask the user
 whether to pad it to 1920x1080 — a caption drawn for 1920x1080 lands off-frame.
@@ -235,10 +235,17 @@ against the previous one to find which cues moved, then:
 python scripts/splice.py out.mp4 source.mp4 sub.srt out_fixed.mp4 \
     --font assets/NotoSansSC-Bold.ttf --change-from 310 --change-to 316 \
     --duration 1354.351 --chapters chapters.json --avoid avoid.json
-python scripts/verify.py out_fixed.mp4 --expect-frames <frames> --seams 310 316
+python scripts/verify.py out_fixed.mp4 --expect-frames <frames> --seams 310 316 \
+    --reference out.mp4
 ```
 
-15 seconds instead of 20 minutes. The frame count must come out identical.
+15 seconds instead of 20 minutes. Only the video between two keyframes is
+re-encoded; the audio is copied whole. `splice.py` checks its result against
+`out.mp4` — same frame count, head and tail untouched, every frame on its
+original timestamp, audio identical — and if anything is off it does not write
+`out_fixed.mp4` (the attempt is kept as `out_fixed.splice-failed.mp4`). The output
+may be `out.mp4` itself. If the full build used a non-default `--preset`, give the
+splice the same one.
 
 **A splice gets the same placement flags as the full build.** `splice.py`
 re-renders its window with `build_overlay.py`, so pass it everything the full

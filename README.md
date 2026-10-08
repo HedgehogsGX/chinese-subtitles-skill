@@ -81,7 +81,7 @@ scripts/
   find_chapters.py               locate burned-in chapter cards
   burn_in.py                     composite and encode
   splice.py                      re-encode only what changed, frame-exact
-  verify.py                      frame count, audio seams, legibility contact sheet
+  verify.py                      frame count, timestamps, audio at seams, legibility
 ```
 
 ## Adding a glossary
