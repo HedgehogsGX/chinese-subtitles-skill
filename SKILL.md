@@ -159,7 +159,9 @@ of the creator's socials. Extract a frame, find the gap, and declare it:
 The default caption band sits above a typical FPS HUD. A different game, or
 non-gaming footage, may put its own elements there — a MOBA minimap, a rhythm
 game's judgement line, a talk's lower third. Extract a frame and look before
-accepting the default.
+accepting the default. To move the band for the whole video, give
+`build_overlay.py` `--bottom <y>` (940 sits just above a StarCraft observer's
+player-stats bar), and write the value down: every later splice needs it too.
 
 ### 7. Build the overlay and encode
 
@@ -237,6 +239,15 @@ python scripts/verify.py out_fixed.mp4 --expect-frames <frames> --seams 310 316
 ```
 
 15 seconds instead of 20 minutes. The frame count must come out identical.
+
+**A splice gets the same placement flags as the full build.** `splice.py`
+re-renders its window with `build_overlay.py`, so pass it everything the full
+build was given — `--bottom`, `--size`, `--chapter-bottom`, `--chapter-size`,
+`--variation`, and the same `--chapters` and `--avoid` — and it forwards them. A
+flag left out falls back to its default: a video built with `--bottom 940` gets
+its spliced window drawn at 975, on top of the scoreboard. Anything done to the
+overlay PNGs by hand after `build_overlay.py` is not replayed either; a fix inside
+such a stretch needs the overlay rebuilt and that step redone.
 
 ## Deliverables
 

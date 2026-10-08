@@ -9,7 +9,14 @@ pieces with stream copy. Typical cost: about 15 seconds.
 Run:
   python splice.py current.mp4 source.mp4 new_sub.srt out.mp4 \
       --font <ttf> --change-from 310.0 --change-to 316.0 \
-      --duration 1354.351 [--chapters c.json] [--avoid a.json]
+      --duration 1354.351 [--chapters c.json] [--avoid a.json] [--bottom 940]
+
+The window's overlay is rebuilt from scratch by build_overlay.py, so it must get
+every placement flag the full build got: --bottom, --size, --chapter-bottom,
+--chapter-size, --variation, and the same --chapters and --avoid. A flag left out
+falls back to build_overlay.py's default, and the re-encoded window then puts its
+captions somewhere other than the rest of the video - at y=975 instead of 940,
+say, on top of a StarCraft observer's scoreboard.
 
 The arithmetic is the fiddly part, so it is done in frames rather than seconds.
 `-t` and `-ss` with `-c copy` land on keyframe boundaries and rarely give back
@@ -30,6 +37,8 @@ import argparse, json, os, subprocess, sys, tempfile
 from fractions import Fraction
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+# conda's ffmpeg 4.3.2 renices itself to 19 under x264 - see references/pipeline.md
+FFMPEG = "/opt/homebrew/bin/ffmpeg" if os.path.exists("/opt/homebrew/bin/ffmpeg") else "ffmpeg"
 
 
 def run(cmd, **kw):
@@ -63,7 +72,12 @@ def main():
     ap.add_argument("--chapters", default=None)
     ap.add_argument("--avoid", default=None)
     ap.add_argument("--variation", default=None)
-    ap.add_argument("--ffmpeg", default="ffmpeg")
+    # placement, passed on to build_overlay.py - give the values the full build used
+    ap.add_argument("--size", type=int, default=None)
+    ap.add_argument("--chapter-size", type=int, default=None)
+    ap.add_argument("--bottom", type=int, default=None)
+    ap.add_argument("--chapter-bottom", type=int, default=None)
+    ap.add_argument("--ffmpeg", default=FFMPEG)
     a = ap.parse_args()
     fps = Fraction(a.fps or probe(a.current, "v:0", "stream=r_frame_rate"))
 
@@ -104,13 +118,20 @@ def main():
     if a.chapters: cmd += ["--chapters", a.chapters]
     if a.avoid:    cmd += ["--avoid", a.avoid]
     if a.variation: cmd += ["--variation", a.variation]
-    print(subprocess.run(cmd, capture_output=True, text=True).stdout)
+    for flag, val in (("--size", a.size), ("--chapter-size", a.chapter_size),
+                      ("--bottom", a.bottom), ("--chapter-bottom", a.chapter_bottom)):
+        if val is not None: cmd += [flag, str(val)]
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    print(r.stdout)
+    if r.returncode != 0:
+        sys.exit(f"build_overlay.py failed:\n{r.stderr}")
 
+    # yuva420p before fps, as in burn_in.py: converted once per caption state
     run([a.ffmpeg, "-hide_banner", "-loglevel", "error", "-stats",
          "-ss", f"{head_end:.6f}", "-i", a.source,
          "-f", "concat", "-safe", "0", "-i", os.path.join(ovdir, "concat.txt"),
          "-filter_complex",
-         f"[1:v]format=rgba,fps={fps}[ov];[0:v][ov]overlay=0:0:eof_action=pass[v]",
+         f"[1:v]format=yuva420p,fps={fps}[ov];[0:v][ov]overlay=0:0:eof_action=pass[v]",
          "-map", "[v]", "-map", "0:a", "-frames:v", str(mf),
          "-c:v", "libx264", "-crf", str(a.crf), "-preset", a.preset,
          "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", mid, "-y"])

@@ -40,6 +40,8 @@ YouTube sees one extraction rather than two - its bot check triggers on volume.
 import argparse, json, os, shutil, subprocess, sys
 
 W, H = 1920, 1080
+# conda's ffmpeg 4.3.2 renices itself to 19 under x264 - see references/pipeline.md
+FFMPEG = "/opt/homebrew/bin/ffmpeg" if os.path.exists("/opt/homebrew/bin/ffmpeg") else "ffmpeg"
 
 
 def run(cmd):
@@ -120,7 +122,7 @@ def main():
     ap.add_argument("--cookies-from-browser", default=None,
                     help="only with the user's go-ahead - it reads their browser login")
     ap.add_argument("--yt-dlp", default="yt-dlp")
-    ap.add_argument("--ffmpeg", default="ffmpeg")
+    ap.add_argument("--ffmpeg", default=FFMPEG)
     a = ap.parse_args()
     sys.stdout.reconfigure(line_buffering=True)   # keep our lines in order with yt-dlp's
 
