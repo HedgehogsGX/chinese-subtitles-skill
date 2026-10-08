@@ -51,7 +51,9 @@ skill triggers on its own.
 ## Requirements
 
 - `ffmpeg` (any build — **libass is not required**, which is the point; captions
-  are rendered in PIL because the common macOS ffmpeg builds ship without it)
+  are rendered in PIL because the common macOS ffmpeg builds ship without it).
+  The scripts use Homebrew's `/opt/homebrew/bin/ffmpeg` when it exists, because
+  miniconda's 4.3.2 lowers its own priority while encoding; `--ffmpeg` overrides
 - Python with `pillow` and `numpy`
 - `yt-dlp`, plus a JavaScript runtime for YouTube — Deno, or Node/Bun
   (`fetch.py` picks whichever is installed)

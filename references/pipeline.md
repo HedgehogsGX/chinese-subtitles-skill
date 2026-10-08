@@ -11,7 +11,8 @@ Neither of the ffmpeg builds commonly present on macOS has it:
 
 - conda-forge ffmpeg: `--enable-libfreetype` only, no libass
 - Homebrew ffmpeg 9.0.2: no libass, and no libfreetype either — so `drawtext` is
-  out as well
+  out as well. It does have libx264, and it is the build the scripts encode with
+  where it exists (see the macOS traps below)
 
 Check before assuming:
 
@@ -111,6 +112,45 @@ to the cwd.
 This is also why `splice.py` never hit the bug: it passes an absolute `ovdir`
 under its temp directory, so the joined paths happened to be absolute already.
 
+## Convert the overlay to yuva420p before `fps`, not after
+
+`burn_in.py` and `splice.py` feed the overlay track through
+`[1:v]format=yuva420p,fps=<fps>[ov]` into `overlay`. They used `format=rgba`
+until October 2026. The pixels are the same, but rgba made the overlay the
+slowest part of the encode.
+
+`overlay` blends in yuva420p, so when handed RGBA, ffmpeg inserts its own
+RGBA→YUVA conversion just before it. That is *after* `fps`, which has already
+repeated each caption state out to the video's frame rate, so the conversion runs
+single-threaded on every output frame — 214,000 of them for an hour at 60 fps —
+and the queued RGBA frames cost gigabytes of memory. Converting before `fps`
+does it once per caption state, and `fps` repeats the converted frame.
+
+Measured back to back on an M4: 60 s of 1080p60 StarCraft footage, 20 caption
+states, Homebrew ffmpeg 9.0.2, libx264 crf 20 preset fast.
+
+| overlay graph | speed | peak memory |
+|---|---|---|
+| `format=rgba,fps=60/1` | 2.3x | 4.2 GB |
+| `format=yuva420p,fps=60/1` | 3.1x | 0.9 GB |
+
+On full-length videos with other work competing for the CPU, the gap was wider:
+rgba ran at 0.27–0.5x and passed 5 GB, yuva420p held 1–1.5x under 1 GB.
+
+Same output, checked three ways on that clip: the raw yuv420p frame at a
+captioned timestamp was byte-identical; the framemd5 of all 3601 frames matched
+under both ffmpeg 4.3.2 and 9.0.2; and `burn_in.py`'s H.264 stream had the same
+MD5 with either graph. If the graph ever changes again, recheck it the same way:
+
+```bash
+for g in rgba yuva420p; do
+  ffmpeg -i clip.mp4 -f concat -safe 0 -i ov/concat.txt -filter_complex \
+    "[1:v]format=$g,fps=60/1[ov];[0:v][ov]overlay=0:0:eof_action=pass[v]" \
+    -map "[v]" -f framemd5 -pix_fmt yuv420p $g.md5 -y
+done
+diff rgba.md5 yuva420p.md5 && echo identical
+```
+
 ## Splicing: do the arithmetic in frames
 
 `-t` and `-ss` with `-c copy` land on keyframe boundaries and rarely return
@@ -123,6 +163,19 @@ parts must sum to the original frame count exactly.
 
 The pieces must also share codec parameters or `concat` will refuse or glitch —
 same H.264 profile, resolution, fps, and same audio sample rate and channel count.
+
+**The window needs the full build's placement flags.** `splice.py` rebuilds the
+overlay for its window by calling `build_overlay.py`, and every flag it does not
+pass falls back to `build_overlay.py`'s default. A StarCraft video built with
+`--bottom 940`, just above the observer's player-stats bar, came back from a
+splice with that window's captions at the default 975, on top of the scoreboard.
+`splice.py` now takes `--bottom`, `--size`, `--chapter-bottom` and
+`--chapter-size` and forwards them, as it already did `--variation`, `--chapters`
+and `--avoid`; give it every one the full build had. (The old workaround, an
+`avoid.json` entry spanning the whole video such as
+`[{"from": 0, "to": 100000, "bottom": 940}]`, still works.) Changes made to the
+overlay PNGs by hand after `build_overlay.py` — moving outro captions sideways,
+say — are not replayed by a splice at all.
 
 Verify after every splice:
 - frame count unchanged
@@ -142,10 +195,20 @@ source bitrate, because CRF faithfully preserves compression artefacts already
 baked in. A 932 MB source became about 2.1 GB. That ratio matched the previous
 video in the same series, so it is expected, not a misconfiguration.
 
-Encoding runs about 1.2–1.7x realtime at preset fast on Apple silicon.
+Encoding 1080p60 runs at about 3x realtime at preset fast on an M4 when nothing
+else is encoding, and nearer 1x with a second encode competing.
 
 ## macOS / zsh environment traps
 
+- **The first `ffmpeg` on PATH can be a slow one.** On the Mac this was built
+  on it is miniconda's 4.3.2 (`/opt/miniconda3/bin/ffmpeg`), which drops itself to
+  nice 19 within a second of starting an x264 encode — `ps -o nice= -p <pid>`
+  shows 19 — so any other load starves it, and full encodes crawled at ~0.25x.
+  Homebrew's 9.0.2 has libx264 and keeps its normal priority. `burn_in.py`,
+  `splice.py`, `verify.py` and `fetch.py` therefore default to
+  `/opt/homebrew/bin/ffmpeg` when it exists, and `fetch.py` hands the same binary
+  to yt-dlp; `--ffmpeg` still overrides. Homebrew's lack of libass and libfreetype
+  (see the top of this file) does not matter, because captions are drawn in PIL.
 - **`timeout` does not exist** on macOS. Use a background process plus `sleep`
   and `kill`, or install coreutils for `gtimeout`.
 - **zsh aborts the whole command on an unmatched glob.** `rm -f a/*.part a/*.ytdl`

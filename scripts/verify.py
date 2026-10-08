@@ -21,6 +21,9 @@ try:
 except ImportError:
     sys.exit("needs numpy and pillow")
 
+# conda's ffmpeg 4.3.2 renices itself to 19 under x264 - see references/pipeline.md
+FFMPEG = "/opt/homebrew/bin/ffmpeg" if os.path.exists("/opt/homebrew/bin/ffmpeg") else "ffmpeg"
+
 
 def probe(path, stream, entries):
     return subprocess.run(["ffprobe", "-v", "error", "-select_streams", stream,
@@ -28,7 +31,7 @@ def probe(path, stream, entries):
                           capture_output=True, text=True).stdout.strip()
 
 
-def audio_rms(video, start, dur, ffmpeg="ffmpeg"):
+def audio_rms(video, start, dur, ffmpeg=FFMPEG):
     raw = tempfile.mktemp(suffix=".raw")
     subprocess.run([ffmpeg, "-hide_banner", "-loglevel", "error",
                     "-ss", str(start), "-t", str(dur), "-i", video,
@@ -48,7 +51,7 @@ def main():
     ap.add_argument("--contact-sheet", default=None)
     ap.add_argument("--at", type=float, nargs="*", default=[])
     ap.add_argument("--worst-strip", action="store_true")
-    ap.add_argument("--ffmpeg", default="ffmpeg")
+    ap.add_argument("--ffmpeg", default=FFMPEG)
     a = ap.parse_args()
 
     frames = probe(a.video, "v:0", "stream=nb_frames")
