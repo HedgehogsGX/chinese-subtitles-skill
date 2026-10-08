@@ -25,9 +25,9 @@ The format is pinned, not "best":
   other shape is reported and left alone - a 1920x1080 overlay on it would put the
   captions off-frame, and whether to pad it is the user's call.
 - H.264 over VP9/AV1 at the same size, so any ffmpeg build can decode it.
-- AAC audio. burn_in.py stream-copies the audio and splice.py re-encodes its middle
-  piece to AAC before concatenating with stream copy, so an Opus source would make
-  every later splice fail. Opus is converted to AAC here instead.
+- AAC audio. burn_in.py and splice.py copy the audio into the final MP4 untouched,
+  and AAC is the audio codec every player and upload site accepts in an MP4; Opus
+  in MP4 is not universally supported. Opus is converted to AAC here instead.
 
 Caption choice: a creator-uploaded English track beats ASR - it usually has the
 jargon right. Among YouTube's ASR tracks, `en-orig` is recognition of the spoken
