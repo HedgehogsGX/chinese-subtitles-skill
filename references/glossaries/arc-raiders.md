@@ -11,15 +11,15 @@ tags:
   - translation
   - subtitles
 created: 2026-09-23
-updated: 2026-09-23
+updated: 2026-10-09
 language: zh-CN
-source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 版本（2026-09-22）；附腾讯国服《弧光猎人》对照与全部地图的官方地点名
+source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 版本（2026-09-22）全量语言文件，加 2.0「霜痕小径」更新（2026-10-08）新增内容的官方简中（Embark Steam 简中公告与 2.0 游戏数据）；附腾讯国服《弧光猎人》对照与地图官方地点名
 ---
 
 # ARC Raiders 游戏术语中英字幕词典
 
 > [!abstract] 用途
-> 本词典面向 **ARC Raiders 英语视频（实况、攻略、BOSS 打法、配装与制作、地图点位、剧情设定）的简体中文字幕制作**。「字幕首选」全部取自 Steam 版客户端的简中语言文件（2026-09-23 抓取，对应 1.47.0 版本），包括**六张地图的全部官方地点名和撤离点名**。截至 **2026-09-22**。
+> 本词典面向 **ARC Raiders 英语视频（实况、攻略、BOSS 打法、配装与制作、地图点位、剧情设定）的简体中文字幕制作**。「字幕首选」取自 Steam 版客户端的简中语言文件（2026-09-23 抓取，对应 1.47.0 版本），包括**最早六张地图的全部官方地点名和撤离点名**。2.0「霜痕小径」更新（2026-10-08）新增的地图、ARC、武器、物品、系统和重做后的技能树，取自 Embark 的 Steam 简中公告和 2.0 游戏数据（见 §16）。截至 **2026-10-09**。
 
 > [!warning] 客户端有完整简中，别自己译
 > 1. 游戏有官方简中界面、字幕和配音，绝大多数名词都有官方译名。2025 年 10 月发售前后的中文媒体文章用过「埋藏城市」「斯特拉蒙蒂斯」「斯佩兰萨」「掠夺者套牌」「收割机」「铁锈带」，都不是客户端名。
@@ -34,10 +34,11 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 3. `Topside` 写「上层」：客户端 113 处全部这样译；Steam 商店文案写「地表」，地图界面的图层名 `Surface` 也是「地表」。同一视频只用一种，优先「上层」。`Speranza` 写「斯佩兰扎」。
 4. 地图、地点、撤离点一律用 §5、§6 的官方名。口语可简称「大坝」（客户端地图描述就写「俗称“大坝”」）。没有收录的小地点，按英文字面给描述性译名并标注非官方。
 5. ARC 机器名用官方译名，不加引号。中文社区外号（大蜘蛛＝跳跃者）只在实况语气的字幕里用。
-6. 武器写官方名加罗马数字等级（「水壶 II」），口语可省等级。官方给不少枪取了意译名（Ferro→生铁、Stitcher→钉机、Arpeggio→三连奏、Renegade→叛逆、Equalizer→制裁者），不要按音译或繁中改写。
-7. 系统名（免费配装、安全口袋、储备箱、远征、试炼、计划、功绩、奇袭者套件）用客户端译名；搜打撤圈的通用黑话（跑刀、鼠鼠、舔包、背刺、猛攻）只在原话本身是玩家口吻时用。
+6. 武器写官方名加罗马数字等级（「水壶 II」），口语可省等级。官方给不少枪取了意译名（Ferro→生铁、Stitcher→钉机、Arpeggio→三连奏、Renegade→叛逆、Equalizer→制裁者、Stiletto→细剑、Bantam→小钢炮），不要按音译或繁中改写。2.0 的新枪和增强武器在客户端里带引号（“细剑”、增强型“水壶”），字幕同样去掉引号。
+7. 系统名（免费配装、安全口袋、储备箱、远征、试炼、计划、功绩、哨站、研究站、武器增强、奖励通行证、武器贴花）用客户端译名；搜打撤圈的通用黑话（跑刀、鼠鼠、舔包、背刺、猛攻）只在原话本身是玩家口吻时用。
 8. `Downed` 是「倒地」（可被救援），`Knocked out` 是「击倒」（本作指出局、丢失随身物品），两者不能混；`Revive` 写「救援」。
-9. 版本：大约每两个月一次大更新，每季一次「远征」重置；地图条件、敌人和物品会增减。更早的视频按发布日期判断，例如 2025-11-13 北线更新之前没有星辰山和族母，2026-04-28 之前没有裂潮镇。
+9. 版本：大约每两个月一次大更新，每季一次「远征」重置；地图条件、敌人和物品会增减。更早的视频按发布日期判断，例如 2025-11-13 北线更新之前没有星辰山和族母，2026-04-28 之前没有裂潮镇，2026-10-08 霜痕小径（2.0）之前没有彭多拉山口、哨站、武器增强和奖励通行证。2.0 起信用点取消，奇袭者套件并入「传承奖励通行证」，技能树重做（旧视频里的已删技能见 §12 末尾）。
+10. 地图名 `Pendola Pass` 写「彭多拉山口」；「霜痕小径」是 2.0 更新名 `Frozen Trail`，两者不能互换。
 
 ## 1. 游戏、版本与平台
 
@@ -61,6 +62,12 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Shrouded Sky（2026-02-24） | Shrouded Sky 更新 | | 更新名保留英文；加入「飓风」地图条件。 |
 | Flashpoint（2026-03-31） | Flashpoint 更新 | | 更新名保留英文；加入“汽化者”、「严密排查」。 |
 | Riven Tides（2026-04-28） | 裂潮镇更新 | | 新地图裂潮镇、ARC“涡轮”、“萤火虫”、「海滩拾荒点」。 |
+| Store Update 1.48.0（2026-09-29） | 1.48.0 更新 | | 只加了外观配色。 |
+| Frozen Trail（2026-10-08，2.0） | 《霜痕小径》更新 | 霜痕小径、2.0 | Embark 简中公告的官方名，带书名号。加入彭多拉山口、ARC护卫者、“恶霸”“潜伏者”“九头蛇”、哨站、武器增强、奖励通行证、武器贴花，技能树重做。不是地图名，见原则 10。 |
+| Collector Set DLC | 收藏套装DLC | | 2.0 同期 DLC：伦佐套装、龙息武器贴花、波波头发型、2,400 奇袭者代币、高级奖励通行证、复古沙发、班卓琴蓝图。 |
+| play for free | 免费游玩 | | 2026-10-08 至 10-12 全平台免费。 |
+| PvE matchmaking toggle | PvE 匹配开关 **（建议译名）** | | 2026-10-13 至 10-20 的限时测试：PvE 对局没有玩家间伤害，护卫者、夜间奇袭、隐藏地堡、上锁的大门不进 PvE。测试结束后撤下。 |
+| Solo vs. Squads | 单人对小队 **（建议译名）** | | 匹配选项，2.0 起移除。 |
 
 ## 2. 世界观、角色与商人
 
@@ -68,7 +75,9 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 |---|---|---|---|
 | ARC | ARC | 机器、机器人 | 侵占地表的机械势力。Steam 商店写「ARC机器」。 |
 | Raider | 奇袭者 | 玩家 | 见原则 2。 |
-| Speranza | 斯佩兰扎 | 基地 | 地下定居点，国服官网写「地下基地斯佩兰扎」。 |
+| Speranza | 斯佩兰扎 | 基地 | 地下城市托雷多里的一个街区，奇袭者的家。国服官网写「地下基地斯佩兰扎」。 |
+| Toledo | 托雷多 | | 斯佩兰扎所在的地下城市。「托雷多城」也见于客户端。 |
+| Ferrovia | 费罗维亚街区 | | 托雷多城的街区，弹道吊舱出自这里的工程师。 |
 | Speranzans | 斯佩兰扎人 | | |
 | Topside | 上层 | 地表、上面 | 见原则 3。 |
 | the Rust Belt | 锈带 | | 地表可探索区域的统称。 |
@@ -77,6 +86,10 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | First Wave | 第一波 | | ARC 的第一次大规模进攻。剧情语境可照客户端写成“第一波”。 |
 | Exodus | 离巢 | | 离开地球的计划；「离巢模块」「离巢计划」。 |
 | Harvester | 收割者 | | ARC 的大型建筑，“女王”守在旁边。不译「收割机」。 |
+| Harvester Payload | “收割者”空投 | | 送往“帝王”的货物。彭多拉山口有「埋藏的“收割者”空投」，「“帝王”信标」可以召唤它。 |
+| Emperor | 帝王 | | 巨型 ARC，客户端写“帝王”或“帝王”机器。2.0 剧情里有一台倒在彭多拉山口（陨落帝王），可以进入内部。不译「皇帝」。 |
+| Nomads | 游民 | | 2.0 任务线里的流浪群体：「游民营地」「游民路径」「初代游民」。 |
+| Nomadic Envoy | 游牧使团 | | 轮换出现的商人兼任务发布者。不写「游牧使节」。 |
 | traders | 商人 | 商人 | |
 | Celeste | 塞莱斯特 | | 商人，“第一波”的幸存者，维持斯佩兰扎运转。 |
 | Shani | 萨尼 | | 商人。 |
@@ -104,6 +117,7 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Select Destination | 选择目的地 | 选图 | |
 | Map Condition | 地图条件 | 地图事件、天气 | 每局附加的规则，见 §5。 |
 | loot value（low／medium／high） | 战利品价值（低／中／高） | | 选图界面的风险提示。国服官网写作「危险等级 I–IV」。 |
+| Dynamic Loot Zone | 动态战利品区域 **（建议译名）** | | 2.0 先在彭多拉山口测试：区域的战利品类型不变，价值每局浮动。 |
 | loot／looting | 搜刮 | 搜 | 界面写「搜刮」「搜集战利品」。 |
 | container | 容器 | 箱子 | |
 | breach | 突破 | 撬开 | 撬门、撬容器的交互名。 |
@@ -158,6 +172,16 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Medical Lab | 医疗实验室 | | |
 | Refiner | 精加工机 | | |
 | Utility Station | 工具工作台 | | |
+| Gear Bench | 装备工作台 | | 制作护盾和强化。 |
+| Research Station | 研究站 | | 2.0 哨站里的工作台：用研究点数研究蓝图、家具设计图和武器增强节点。Embark 公告写「研究工作站」，客户端工作台名是「研究站」，字幕用后者。 |
+| Research Points | 研究点数 | | 2.0 新货币，研究站用。 |
+| Research Item | 研究物品 | | 2.0 物品类别：破旧平装书、奇袭者日志、“离巢”技术手册、ARC数据模块、“护卫者”诊断节点。 |
+| Outpost／Raider Outpost | 哨站／奇袭者哨站 | | 2.0 加入的「奇袭者巢穴扩充」，坐落在锈带与山脉之间：完成计划解锁，可加房间、摆家具，并解锁研究站。与大坝战场的地点「哨站」同名。 |
+| Outpost room | 哨站房间 | | 基础房间、木屋房间、全景房间、研究室、永恒房间。公告把扩建单位叫「模块」。 |
+| Furniture | 家具 | | 类别：床、装饰物、灯具、座椅、仓库、桌子。 |
+| Design／Furniture Design | 设计图／家具设计图 | | 学会后可制作家具，用法类似蓝图。 |
+| Weapon Amplification | 武器增强 | | 2.0 新系统：在研究站解锁，给 15 把枪加第五个品质级别和分支能力。增强武器见 §8。 |
+| Weapon Stencil | 武器贴花 | | 2.0 新外观：学会后用「贴花组件」套到武器上；倒地被舔包时连贴花一起丢。物品类别名写「贴花」。 |
 | Stash | 储备箱 | 仓库 | |
 | Safe Pocket | 安全口袋 | 安全箱 | 死亡也不会丢的格子。「安全箱」「保险箱」是塔科夫、三角洲玩家的叫法。 |
 | Backpack | 背包 | | |
@@ -174,7 +198,8 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Trade | 交易 | | |
 | Durability | 耐用性 | 耐久 | |
 | Coins | 钱币 | 钱 | 主要游戏内货币。 |
-| Cred | 信用点 | | 完成功绩获得，用来领奇袭者套件奖励。 |
+| Cred | 信用点 | | 完成功绩获得，用来领奇袭者套件奖励。2.0 起取消，由奖励通行证点数取代。 |
+| Reward Pass Points／Reward Points | 奖励通行证点数 | | 客户端写「奖励通行证点数」，英文补丁说明简称 Reward Points。自动计入当前启用的通行证。 |
 | Raider Tokens | 奇袭者代币 | 代币 | 付费货币。 |
 | Seeds | 种子 | | 远征时会重置。 |
 | Merits | 功勋 | | 社区活动货币。 |
@@ -182,8 +207,13 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Skill Tree | 技能树 | | 三个分支见 §12。 |
 | Skill Points | 技能点 | | |
 | Quests | 任务 | 任务 | 商人发布。 |
-| Feats | 功绩 | | 日常／周常挑战，给信用点。 |
-| Raider Deck | 奇袭者套件 | 卡组、通行证 | 相当于通行证。 |
+| Feats | 功绩 | | 日常／周常挑战。2.0 起分简单、中等、困难三档，给奖励通行证点数并累计每周里程碑进度。 |
+| weekly milestone | 每周里程碑 **（建议译名）** | | 2.0 功绩系统：每周三档里程碑奖励。 |
+| Raider Deck | 奇袭者套件 | 卡组、通行证 | 相当于通行证。2.0 起全部并入「传承奖励通行证」。 |
+| Reward Pass | 奖励通行证 | | 2.0 起取代奇袭者套件的进度系统，同一时间只能启用一个。 |
+| Free Pass／Premium Pass | 免费通行证／高级通行证 | | 高级通行证只有外观，售价 1,150 奇袭者代币。 |
+| Frozen Trail Reward Pass | 霜痕小径奖励通行证 | | 60 级；高级线写「霜痕小径高级奖励通行证」。 |
+| Legacy Pass／Legacy Reward Pass | 传承奖励通行证 | | 旧奇袭者套件的外观和代币合成一张免费通行证，已领的保留。 |
 | Trials | 试炼 | | 每周挑战排名。 |
 | Projects | 计划 | 工程 | 需要提交材料的长期建设。 |
 | Expedition | 远征 | 重置、删档 | 自愿参加的赛季重置，换取永久奖励。 |
@@ -194,6 +224,7 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Trophy Display | 战利品展示架 | | |
 | Raider Tool | 奇袭工具 | | 近战工具，也用来撬东西。 |
 | rarity：Common／Uncommon／Rare／Epic／Legendary | 普通／罕见／稀有／史诗／传奇 | | `Uncommon` 官方是「罕见」，不写「不常见」。 |
+| rarity：Amplified | 已增强 | | 2.0 增强武器和增强模块的稀有度。 |
 
 ## 5. 地图、地图条件与活动
 
@@ -207,10 +238,11 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | The Blue Gate | 蓝门 | 蓝门 | |
 | Stella Montis | 星辰山 | 星辰山 | 2025-11-13 北线更新加入。不写「斯特拉蒙蒂斯」「山之星」。 |
 | Riven Tides | 裂潮镇 | 裂潮镇 | 2026-04-28 加入。 |
+| Pendola Pass | 彭多拉山口 | | 2026-10-08 霜痕小径（2.0）加入：锈带群山之外的意大利古村，也是离巢计划的交通枢纽，坐弹道吊舱上山。**不写「霜痕小径」**，见原则 10。 |
 | The Backyard | 后院 | 靶场 | 练习靶场。 |
 | Surface／Underground（map layer） | 地表／地下 | | 地图图层名。 |
 
-### 地图条件（截至 1.47.0 已上线）
+### 地图条件（截至 2.0 已上线）
 
 | 英文或缩写 | 字幕首选 | 中文社区常见说法 | 说明 |
 |---|---|---|---|
@@ -220,8 +252,8 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | The Queens | 女王 | | 多个“女王”同时出现。 |
 | Matriarch | 族母 | | |
 | Hidden Bunker | 隐藏地堡 | 地堡 | 太空港的地图条件和地点。 |
-| Husk Graveyard | 机械坟场 | | |
-| Lush Blooms | 收获季节 | | 官方中文按内部名 Harvest Season 译，不是字面的「繁花」。 |
+| Husk Graveyard | 机械坟场 | | 第三方工具站写「机壳墓地」，不是客户端名。 |
+| Lush Blooms | 收获季节 | | 官方中文按内部名 Harvest Season 译，不是字面的「繁花」；第三方工具站写「繁茂花丛」。 |
 | Prospecting Probes | 四处窥探的探测器 | 探测器 | |
 | Uncovered Caches | 暴露的奇袭者箱 | | |
 | Launch Tower Loot | 发射塔上的战利品 | 发射塔 | 太空港。 |
@@ -232,6 +264,9 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Close Scrutiny | 严密排查 | | 全称「ARC行动：严密排查」。 |
 | ARC Operation | ARC行动 | | 这类地图条件的前缀。 |
 | Beachcombing | 海滩拾荒点 | | 裂潮镇专属。 |
+| ARC Frigate | ARC护卫者 | 护卫者 | 2.0 的大型地图条件：巨型 ARC 舰艇在空中巡逻，可登舰搜刮货舱，舰上有“九头蛇”。客户端写 ARC“护卫者”。 |
+| Redirection | 航向重定向 | | 2.0 新地图条件。 |
+| Flash Freeze | 极寒冰爆 | | 彭多拉山口的天气，Embark 简中公告称「天气状况」。 |
 | No Free Loadout | 无免费配装可用 | | 部分地图条件的限制。 |
 | Custom Loadout required | 需要自定义配装 | | |
 
@@ -247,7 +282,7 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 
 ## 6. 逐图地点（客户端官方简中全表）
 
-> 下列地点名全部取自客户端语言文件，按地图分组；「大区域」是地图上最大的地名标签，其余按英文字母排序。说明栏引用客户端自带的地点简介（有的地点没有简介）。上锁房间等开发用字符串未汉化，不收。
+> 6.1–6.6 的地点名全部取自 1.47.0 客户端语言文件，按地图分组；「大区域」是地图上最大的地名标签，其余按英文字母排序。说明栏引用客户端自带的地点简介（有的地点没有简介）。上锁房间等开发用字符串未汉化，不收。6.7 彭多拉山口是 2.0 新图，只有任务文本、钥匙名和公告里出现过的地点。
 
 ### 6.1 大坝战场（Dam Battlegrounds）
 
@@ -709,7 +744,32 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Wreckage | 残骸 |  |
 | Wreckages | 船只残骸 | 经年累月的汹涌暗流与刺骨锈蚀，已留下显而易见的创伤。 |
 
-### 6.7 新手教程关卡与未标明所属地图的地点
+### 6.7 彭多拉山口（Pendola Pass）
+
+> 2.0 客户端的地点表还没有抓到（见 §17）。下表取自 2.0 的任务文本、钥匙名和 Embark 简中公告，都是官方简中，但不是完整的地图标签；撤离点暂缺。地图上没有收录的地点，按原则 4 处理。
+
+| 英文 | 官方简中 | 说明 |
+|---|---|---|
+| Almatera Station | 阿尔玛特拉站 | 任务文本。附近有“帝王”的一条腿。 |
+| Buried Harvester Payload | 埋藏的“收割者”空投 | 任务文本，在“帝王”底部。 |
+| Church（Old Town） | 老城区教堂 | 任务文本。 |
+| Cielo Sereno Observatory | 晴空天文台 | 任务文本；钥匙名简称「天文台」，公告写「天文台」。 |
+| Commissary Supermarket | 军需超市 | 任务文本；公告里的「超市」。 |
+| Deep-Space Telescope | 深空望远镜 | 任务文本。 |
+| Electrical Substation | 变电站 | 任务文本。大坝战场、太空港也有同名地点。 |
+| Fallen Emperor | 陨落帝王 | 倒下的“帝王”，用「“帝王”通道导管」进入内部。物品说明。 |
+| Nomad Camp | 游民营地 | 任务文本，在铁路站场下方。 |
+| Northern Tracks | 北部铁轨 | 任务文本。 |
+| Old Town | 老城区 | 任务文本、钥匙名。掩埋废城也有「老城区」。 |
+| Railroad Junction | 铁路站场枢纽 | 任务文本。 |
+| Railyard | 铁路站场 | 任务文本；钥匙名写「铁路场」，客户端两种写法并存。裂潮镇也有「铁路站场」。 |
+| Researcher Lodgings | 研究员住所区 | 任务文本。 |
+| Train Station | 火车站 | 钥匙名。 |
+| Truck Stop | 卡车停靠站 | 任务文本。 |
+| buried train depot | 被掩埋的火车转运站 | 公告描述，不一定是地图标签。 |
+| town square | 城镇广场 | 公告描述，不一定是地图标签。 |
+
+### 6.8 新手教程关卡与未标明所属地图的地点
 
 | 英文 | 官方简中 | 说明 |
 |---|---|---|
@@ -725,7 +785,7 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Secluded Roof Terrace | 隐蔽排屋屋顶 | 客户端未标明所属地图。 |
 | Water Siphoning | 水虹吸泵 | 客户端未标明所属地图。 |
 
-### 6.8 撤离点
+### 6.9 撤离点
 
 | 英文 | 官方简中 | 说明 |
 |---|---|---|
@@ -805,6 +865,12 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Bombardier | 投弹手 | | 远程炮击的大型步行机。 |
 | Queen | 女王 | | BOSS，与「收割者」地图条件一起出现。 |
 | Matriarch | 族母 | | BOSS，北线更新加入。不译「女家长」。 |
+| Bully | 恶霸 | | 2.0 新敌人，机器学习驱动的冲锋型 ARC，压上阵地连续猛攻。掉落「“恶霸”破片弹」。不译「霸凌者」。 |
+| Skulker | 潜伏者 | | 2.0 新敌人，在视野边缘游走、伺机偷袭。掉落「“潜伏者”瞄准组件」「“潜伏者”引擎」。 |
+| Hydra | 九头蛇 | | 2.0 新敌人，三段叠在一起、各自开火的炮塔，守在“护卫者”和“帝王”附近。不写「海德拉」。 |
+| Frigate／ARC Frigate | 护卫者／ARC护卫者 | | 2.0 的巨型 ARC 舰艇，也是同名地图条件。公告称它为「巨大的航空母舰」。不译「护卫舰」。 |
+| Emperor | 帝王 | | 巨型 ARC，倒在彭多拉山口的那台叫「陨落帝王」。见 §2。 |
+| Deforester | 伐木手 | | 任务文本里蓝门旁的大型 ARC 残骸。 |
 | weak point／weakspot | 弱点 | 弱点 | 大型 ARC 的关节、后部等发光部位。 |
 | ARC loot | ARC战利品 | 零件 | 击毁 ARC 后的掉落，见 §11。 |
 
@@ -828,24 +894,28 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Bettina | 贝蒂娜 | | 突击步枪，史诗。 |
 | Ferro | 生铁 | | 战斗步枪，普通，打一发装一发。 |
 | Renegade | 叛逆 | 叛徒（繁中名） | 战斗步枪，稀有。 |
+| Stiletto | 细剑 | | 战斗步枪，罕见，2.0 加入。半自动、用轻型弹药，前期替代叛逆。客户端名带引号（“细剑”）。不写「短剑」。 |
 | Stitcher | 钉机 | 缝合者（繁中名） | 冲锋枪，普通。 |
 | Bobcat | 山猫 | | 冲锋枪，史诗。 |
 | Canto | 颂歌 | | 冲锋枪，稀有。 |
 | Hairpin | 发夹 | | 手枪，普通。 |
-| Burletta | 布尔莱塔 | 喜歌剧 | 手枪，罕见。客户端里它的蓝图写成「喜歌剧蓝图」，武器本身写「布尔莱塔」。 |
+| Burletta | 布尔莱塔 | 喜歌剧 | 手枪，罕见。客户端里它的蓝图写成「喜歌剧蓝图」，增强版写「增强型“喜歌剧”」，Embark 简中公告也写「全自动的喜歌剧」；武器本身仍写「布尔莱塔」。 |
 | Venator | 复仇者 | 维纳托尔 | 手枪，稀有。 |
-| Anvil | 铁砧 | | 大口径手枪，罕见。 |
+| Anvil | 铁砧 | | 大口径手枪，2.0 起稀有（之前罕见），罕见档由小钢炮接替。 |
+| Bantam | 小钢炮 | | 大口径手枪，罕见，2.0 加入。短管左轮，用重型弹药，腰射有加成。客户端名带引号（“小钢炮”）。 |
 | Il Toro | 公牛 | | 霰弹枪，罕见。 |
 | Vulcano | 火山 | | 霰弹枪，史诗。 |
 | Dolabra | 錾斧 | | 霰弹枪，传奇。 |
 | Torrente | 奔流 | 托伦特 | 轻机枪，稀有。 |
-| Equalizer | 制裁者 | 均衡器 | 轻机枪，传奇。 |
+| Equalizer | 制裁者 | 均衡器 | 传奇。2.0 游戏数据归在「特殊」类（本表之前记作轻机枪）。 |
 | Osprey | 鱼鹰 | | 狙击步枪，稀有。 |
 | Jupiter | 木星 | | 狙击步枪，传奇。 |
 | Hullcracker | 裂甲者 | 破壳者（繁中名） | 特殊，史诗，发射器。 |
 | Rascal | 无赖 | | 特殊，稀有。 |
-| Aphelion | 远日点 | | 特殊，传奇。 |
+| Aphelion | 远日点 | | 传奇。2.0 游戏数据归在「战斗步枪」类（本表之前记作特殊）。 |
 | weapon tier I–IV | I–IV 级 | | 如「水壶 III」。 |
+| Amplified 〈weapon〉 | 增强型〈武器名〉 | | 2.0 的第五个品质级别，如 Amplified Kettle「增强型水壶」（客户端写增强型“水壶”）。首批 15 把：水壶、响尾蛇、贝蒂娜、叛逆、远日点、铁砧、布尔莱塔（增强版写喜歌剧）、发夹、颂歌、公牛、木星、鱼鹰、制裁者、裂甲者、无赖。 |
+| Amplified Weapons | 增强型武器 | | 公告里对这套系统的叫法；系统名是「武器增强」。 |
 | Light Ammo | 轻型弹药 | | |
 | Medium Ammo | 中型弹药 | | |
 | Heavy Ammo | 重型弹药 | | |
@@ -856,6 +926,28 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Stability／Agility／Stealth／Handling | 稳定性／灵敏度／潜行／操控性 | | 武器属性。 |
 | Magazine Size | 弹匣容量 | | |
 | Burst | 点射 | | 射击模式。 |
+
+### 武器增强研究项目（2.0）
+
+> 在研究站研究这些项目，解锁增强武器的分支。研究名取自 2.0 游戏数据；「解锁的分支」按数据里的分支编号归纳，不是客户端文字，字幕里描述效果时照英文原话意译即可。
+
+| 英文 | 官方简中 | 解锁的分支 |
+|---|---|---|
+| Action Economy | 操作效率 | 直拉枪机（木星、鱼鹰） |
+| Beam Resonance Tech | 光束共振技术 | 伤害递增（制裁者） |
+| Burst Assembly Recovery | 连发组件复原 | 点射模式（布尔莱塔） |
+| Compact Combustion Charges | 紧凑型燃烧装药 | 燃烧榴弹（裂甲者、无赖） |
+| Embedded Blast Engineering | 内嵌爆炸工程学 | 爆炸弹（水壶、贝蒂娜、铁砧） |
+| Extended Burst Cycles | 延长连发周期 | 加长点射（布尔莱塔、远日点） |
+| High-Voltage Exposure | 高压暴露试验 | 蓄能点射（远日点） |
+| Magazine Geometry 101 | 弹匣结构入门 | 弹鼓（响尾蛇） |
+| Mobile-Fire Grip Fittings | 移动射击握把配件 | 冲刺射击（布尔莱塔、发夹、颂歌、无赖） |
+| Shield Stress Testing | 护盾应力测试 | 破盾（水壶） |
+| Solid-Core Casting Tech | 实心铸造技术 | 独头弹（公牛） |
+| Targeted Component Trial | 靶向部件试验 | 弱点伤害（鱼鹰、制裁者） |
+| Thermite-Tipped Rounds | 铝热剂弹头 | 燃烧弹（响尾蛇、远日点、发夹、颂歌） |
+| Top Mounted Optics Retrofittings | 顶置光学瞄具改装 | 加装瞄准镜（叛逆、木星） |
+| Trigger Reset Systems | 扳机复位系统 | 半自动（贝蒂娜、发夹） |
 
 ## 9. 改装件、护盾与强化
 
@@ -878,7 +970,7 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Extended Medium Mag I–III | 中型扩容弹匣 I–III | | |
 | Extended Shotgun Mag I–III | 霰弹扩容弹匣 I–III | | |
 | Kinetic Converter | 动能转换器 | | 传奇改装件。 |
-| Anvil Splitter | “铁砧”分流器 | | 传奇改装件，铁砧专用。 |
+| Anvil Splitter | “铁砧”分流器 | | 传奇，原为铁砧专用改装件。2.0 起不能再装，改成增强型铁砧的升级分支；物品本身不再掉落，可卖掉或回收成增强碎片。 |
 | Light Shield | 轻型护盾 | | |
 | Medium Shield | 中型护盾 | | |
 | Heavy Shield | 重型护盾 | | |
@@ -929,6 +1021,7 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Deadline | 死线 | | |
 | Firecracker | 爆竹 | | |
 | Snowball | 雪球 | | |
+| Yank Grenade | 系索弹 | | 罕见，2.0 加入。命中后拴上绳索把目标猛拉过去，能把飞行 ARC 拽到地上、把人拉出掩体。 |
 
 ### 陷阱、地雷与可部署物
 
@@ -953,7 +1046,15 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 |---|---|---|---|
 | Gadget | 小道具 | | 装备分类名。 |
 | Zipline | 滑索 | | |
-| Snap Hook | 安全钩 | | 传奇小道具，可以勾住高处拉过去。 |
+| Snap Hook | 安全钩 | | 传奇小道具，可以勾住高处拉过去。2.0 起定位为爆发型位移，与新的「钩爪」区分。 |
+| Grappling Hook／Grapple Hook | 钩爪 | | 罕见，2.0 加入。勾住表面后攀爬、垂降、荡过缺口。**不要和安全钩混用。** |
+| Tethers | 系索 | | 系索发射器和系索弹的统称。 |
+| Tether Launcher | 系索发射器 | | 稀有，2.0 加入。两发，把两个点用绳索连起来，可把奇袭者拴在 ARC 上拖走。 |
+| Camera | 相机 | | 公告里的统称。照片存进百科；2.0 起多个任务要求拍照，解锁哨站的第一步也要拍照。 |
+| Basic Camera | 简易相机 | | 罕见，2.0 加入。 |
+| Advanced Camera | 高级相机 | | 稀有，2.0 加入。 |
+| Mountaineer's Detector | 登山者探测器 | | 稀有，2.0 加入，探测雪下埋藏的物品，沙地里也能用。 |
+| Emperor Beacon | “帝王”信标 | | 史诗，2.0 加入。部署在开阔处召唤“收割者”空投。 |
 | Powered Descender | 动力下降器 | | 裂潮镇更新加入。 |
 | Photoelectric Cloak | 光电斗篷 | | |
 | Binoculars | 望远镜 | | |
@@ -967,6 +1068,9 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Acoustic Guitar | 原声吉他 | | 能弹奏，也能吸引 ARC 注意。 |
 | Recorder | 可演奏长笛 | | |
 | Shaker | 摇铃 | | |
+| Harmonica | 口琴 | | 罕见，2.0 加入的乐器。 |
+| Banjo | 班卓琴 | | 稀有，2.0 加入的乐器，蓝图只在收藏套装DLC里。 |
+| Rubber Duck | 橡皮鸭子 | | 饰品，可投掷制造噪音。同系列还有温顺鸭、热带鸭、外星鸭等。 |
 
 ## 11. 材料、钥匙与 ARC 零件
 
@@ -1018,9 +1122,35 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Moss | 苔藓 | | |
 | Great Mullein | 大毛蕊花 | | |
 | Volcanic Rock | 火山岩 | | |
+| Stencil Parts | 贴花组件 | | 2.0，给武器套贴花用。 |
+| Amplified Fragments | 增强碎片 | | 2.0，回收得到，用来修理增强武器。 |
+| Amplification Module Mk. I–V | 增强模块 Mk. I–V | | 2.0，把武器升到增强版的材料，按武器分五种。客户端写作「增强模块Mk. I」。 |
+| ARC Conductive／Plated／Insulated Coupler | ARC导电／镀层／绝缘耦合器 | | 2.0，三种合成「“帝王”通道导管」。 |
+| Planks | 木板 | | 2.0 基础材料，做家具用。 |
+| Steel Cable | 钢缆 | | 2.0 可回收物，制作系索发射器、安全钩、滑索。 |
+| Cable Stripper | 剥线钳 | | 2.0 上层材料。 |
+| Hand Drill | 手持电钻 | | 2.0 上层材料。 |
+| Laser Level | 激光水平仪 | | 2.0 上层材料。 |
+| Radial Press | 径向压力机 | | 2.0 上层材料。 |
+| Calculator | 计算器 | | 2.0 上层材料。 |
+| Mini Pump | 微型泵 | | 2.0 可回收物。 |
+| Differential Microphone | 差分麦克风 | | 2.0 可回收物。 |
+| Thermal Shaker | 恒温振荡仪 | | 2.0 可回收物。 |
+| Epoxy Bucket | 环氧树脂桶 | | 2.0 可回收物。 |
+| Insulation Roll | 隔热卷材 | | 2.0 可回收物。 |
 | Recyclable | 可回收 | 垃圾、废品 | 物品标签。 |
 | Trinket | 饰品 | 小物件 | 只能卖钱的收藏物；背包筛选里写「小物件」。 |
 | Nature | 自然 | | 植物类物品标签。 |
+
+### 研究物品（2.0）
+
+| 英文或缩写 | 字幕首选 | 中文社区常见说法 | 说明 |
+|---|---|---|---|
+| Battered Paperback | 破旧平装书 | | 普通。 |
+| Raider Logbook | 奇袭者日志 | | 罕见。 |
+| Exodus Technical Handbook | “离巢”技术手册 | | 稀有。 |
+| ARC Data Module | ARC数据模块 | | 史诗。 |
+| Frigate Diagnostic Node | “护卫者”诊断节点 | | 传奇，在 ARC护卫者的行迹中发现。 |
 
 ### 钥匙与安全码
 
@@ -1040,9 +1170,14 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Dam Staff Room Key | 大坝员工室钥匙 | | 罕见。 |
 | Dam Surveillance Key | 大坝监控室钥匙 | | 罕见。 |
 | Dam Testing Annex Key | 大坝测试附楼钥匙 | | 稀有。 |
+| Emperor Gateway Conduit | “帝王”通道导管 | | 传奇，2.0。三种 ARC 耦合器合成，用来进入彭多拉山口的陨落帝王。 |
 | Expired Security Code | 过期安全码 | | 普通。 |
 | Hidden Bunker Key | 隐藏地堡钥匙 | | 普通。 |
 | Patrol Car Key | 巡逻车钥匙 | | 罕见。 |
+| Pendola Pass Observatory Key | 彭多拉山口天文台钥匙 | | 史诗，2.0。 |
+| Pendola Pass Old Town Key | 彭多拉山口老城区钥匙 | | 罕见，2.0。 |
+| Pendola Pass Railyard Key | 彭多拉山口铁路场钥匙 | | 稀有，2.0。 |
+| Pendola Pass Train Station Key | 彭多拉山口火车站钥匙 | | 稀有，2.0。 |
 | Pilgrim's Peak Security Code | 朝圣峰安全码 | | 普通。 |
 | Raider Hatch Key | 奇袭者暗门钥匙 | | 稀有。开奇袭者暗门用。 |
 | Raider's Refuge Security Code | 奇袭者避难所安全码 | | 普通。 |
@@ -1087,6 +1222,7 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Impure ARC Coolant | 不纯净的ARC冷却剂 | | 罕见。 |
 | Pop Trigger | “爆爆”触发器 | | 罕见。击毁“爆爆”掉落。 |
 | Rusty ARC Steel | 生锈的ARC钢材 | | 罕见。 |
+| Skulker Targeter | “潜伏者”瞄准组件 | | 罕见，2.0。击毁“潜伏者”掉落。 |
 | Snitch Scanner | “告密者”扫描仪 | | 罕见。击毁“告密者”掉落。 |
 | Spotter Relay | “侦察员”中继器 | | 罕见。击毁“侦察员”掉落。 |
 | Tick Pod | “跳蚤”收纳舱 | | 罕见。击毁“跳蚤”掉落。 |
@@ -1097,86 +1233,113 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | ARC Thermo Lining | ARC隔热衬里 | | 稀有。 |
 | Comet Igniter | “彗星”点火器 | | 稀有。击毁“彗星”掉落。 |
 | Firefly Burner | “萤火虫”燃烧炉 | | 稀有。击毁“萤火虫”掉落。 |
-| Glitched ARC Phased Array | 故障ARC相控阵 | | 稀有。 |
+| Glitched ARC Phased Array | 故障ARC相控阵列 | | 稀有。 |
 | Hornet Driver | “马蜂”引擎 | | 稀有。击毁“马蜂”掉落。 |
 | Sentinel Firing Core | “哨卫”发射核心 | | 稀有。击毁“哨卫”掉落。 |
 | Shredder Gyro | “粉碎者”陀螺仪 | | 稀有。击毁“粉碎者”掉落。 |
+| Skulker Driver | “潜伏者”引擎 | | 稀有，2.0。击毁“潜伏者”掉落。 |
 | Surveyor Vault | “勘测师”保险库 | | 稀有。击毁“ARC勘测师”掉落。 |
 | Wasp Driver | “黄蜂”引擎 | | 稀有。击毁“黄蜂”掉落。 |
 | Bastion Cell | “堡垒”电池 | | 史诗。击毁“堡垒”掉落。 |
 | Bombardier Cell | “投弹手”电池 | | 史诗。击毁“投弹手”掉落。 |
+| Bully Fragmenter | “恶霸”破片弹 | | 史诗，2.0。击毁“恶霸”掉落。 |
 | Glitched ARC Light Ring | 故障ARC光环 | | 史诗。 |
 | Leaper Pulse Unit | “跳跃者”脉冲单元 | | 史诗。击毁“跳跃者”掉落。 |
 | Rocketeer Driver | “火箭手”引擎 | | 史诗。击毁“火箭手”掉落。 |
 | Turbine Compressor | “涡轮”压缩机 | | 史诗。击毁“ARC涡轮”掉落。 |
 | Vaporizer Regulator | “汽化者”调节器 | | 史诗。击毁“汽化者”掉落。 |
-| Glitched ARC Circuitry | 故障ARC电路 | | 传奇。 |
+| Glitched ARC Circuitry | 故障ARC线圈 | | 传奇。 |
 | Matriarch Reactor | “族母”反应堆 | | 传奇。击毁“族母”掉落。 |
 | Queen Reactor | “女王”反应堆 | | 传奇。击毁“女王”掉落。 |
+| Emperor Modulator | “帝王”调制器 | | 传奇，2.0。升级武器工作台用。 |
+| Frigate Inductor | “护卫者”感应器 | | 传奇，2.0。升级研究站用。 |
 
 ## 12. 技能树
 
-> 三个分支：`Conditioning` 强化、`Mobility` 机动性、`Survival` 生存。技能名取自客户端，效果说明取自 RaidTheory 数据集的简中描述。
+> 三个分支：`Conditioning` 强化、`Mobility` 机动性、`Survival` 生存。2.0「霜痕小径」重做了技能树：新增 16 个技能，删掉 13 个（见本节末尾），不少技能换了分支。每个分支中段是二选一节点（投入 10 点后可选），末端是三选二节点（投入 30 点后选第一个、40 点后选第二个）；重置技能树后可以重新选。技能名和效果说明取自 2.0 游戏数据，按树上从根到末端的顺序排列。
 
 ### 强化（Conditioning）
 
 | 英文 | 官方简中 | 说明 |
 |---|---|---|
-| Used To The Weight | 负重如常 | 携带护盾不会让你的移动能力下降太多。 |
-| Blast-Born | 爆鸣抗性 | 你的听力受附近爆炸的影响减少。 |
-| Gentle Pressure | 轻柔施压 | 破坏物品时的动静变小。 |
-| Fight Or Flight | 要么战，要么跑 | 在战斗中受伤时，恢复一定数值的耐力。每次触发后有冷却时间。 |
-| Proficient Pryer | 撬锁大师 | 破门和打破容器所需的时间减少。 |
-| Survivor's Stamina | 求生耐力 | 在重伤状态下，你的耐力恢复速度增加。 |
-| Unburdened Roll | 轻装翻滚 | 如果护盾被打碎，在接下来数秒内的首次翻滚闪避不消耗耐力。 |
-| A Little Extra | 破物生资 | 破坏物体可产生资源。 |
+| Used To The Weight | 负重如常 | 携带护盾对移动速度的负面影响降低。 |
+| Stubborn Mule | 吃苦耐劳 | 你的耐力恢复受负载过重的影响减少。原属生存分支。 |
+| Three Deep Breaths | 三息回神 | 耐力被技能耗尽后的恢复速度提高。原属生存分支。 |
+| Vault 'n' Carry | 携物翻越 | 手持可搬运物品时仍可翻越障碍物。2.0 新增。 |
+| Vigorous Vaulter | 纵跃无阻 | 耐力耗尽后，翻越动作不会减速。原属机动性分支。 |
+| Back On Your Feet | 不屈意志 | 在重伤状态下，你的生命值会逐渐恢复至一个固定值。中段二选一（另一个是「驮兽疾奔」）。 |
+| Mule's Gallop | 驮兽疾奔 | 负载过重状态下仍可冲刺。2.0 新增。中段二选一（另一个是「不屈意志」）。 |
+| Broad Shoulders | 阔肩载物 | 提高你的负重上限。原属生存分支。 |
 | Downed But Determined | 人倒志不倒 | 倒地后可以坚持更长时间才会完全失去行动能力。 |
-| Effortless Swing | 轻松挥击 | 近战技能消耗的耐力减少。 |
-| Loaded Arms | 武器减负 | 你装备的武器对你的负重影响较小。 |
-| Turtle Crawl | 伏地避弹 | 倒地后，你受到的伤害减少。 |
-| Sky-Clearing Swing | 开天斩 | 你对无人机造成的近战伤害增加。 |
-| Back On Your Feet | 不屈意志 | 在重伤状态下，你的生命值会逐渐恢复至一个固定值。 |
-| Flyswatter | 拍蝇专家 | 黄蜂和炮塔现在只需一次近战攻击就能摧毁。 |
+| Loaded Arms | 武器减负 | 你装备的武器对负重的影响降低。 |
+| Crawl Before You Walk | 伏地速行 | 倒地后，你的爬行速度加快。原属机动性分支。 |
+| Proficient Pryer | 撬锁大师 | 破门和打破容器所需的时间减少。 |
+| Speedy Mule | 疾行驮兽 | 减轻严重负载过重状态下的速度惩罚。2.0 新增。 |
+| Bull Rush | 野蛮冲撞 | 收起武器时，冲刺过程中可击退玩家和ARC单位。2.0 新增。末端三选二（另两个是「安防突破」「武器重击」）。 |
+| Security Breach | 安防突破 | 可以撬开保险柜。原属生存分支。末端三选二（另两个是「武器重击」「野蛮冲撞」）。 |
+| Weapon Bash | 武器重击 | 可使用当前装备的武器发动近战攻击。2.0 新增。末端三选二（另两个是「安防突破」「野蛮冲撞」）。 |
 
 ### 机动性（Mobility）
 
 | 英文 | 官方简中 | 说明 |
 |---|---|---|
-| Nimble Climber | 灵活攀跃 | 提高你的攀爬和翻越速度。 |
-| Marathon Runner | 马拉松跑者 | 移动消耗的耐力减少。 |
-| Slip and Slide | 纵跃丝滑 | 滑行距离更远，速度更快。 |
 | Youthful Lungs | 活力肺能 | 耐力上限增加。 |
-| Sturdy Ankles | 坚韧脚踝 | 从非致命高度掉落时受到的摔落伤害减少。 |
-| Carry The Momentum | 顺势而为 | 使用冲刺翻滚闪避后，短时间内冲刺不会消耗耐力。每次使用之间有冷却时间。 |
-| Calming Stroll | 行稳致远 | 步行时，你的耐力恢复速度和站定时一样。 |
-| Crawl Before You Walk | 伏地速行 | 倒地后，你的爬行速度加快。 |
+| Nimble Climber | 灵活攀跃 | 提高你的攀爬和翻越速度。 |
+| Sure-Footed Scrambler | 稳健攀爬者 | 冲刺时，延长攀爬陡坡的持续时间。2.0 新增。 |
+| Fight Or Flight | 要么战，要么跑 | 在战斗中受伤时，恢复一定数值的耐力。每次触发后有冷却时间。原属强化分支。 |
+| Ready To Roll | 借势翻滚 | 坠落时，受身翻滚的判定时间窗口延长。 |
+| Vault Spring | 跳跃弹簧 | 可以在翻越后起跳。中段二选一（另一个是「身轻如燕」）。 |
+| Vaults on Vaults on Vaults | 身轻如燕 | 翻越动作不再消耗耐力。中段二选一（另一个是「跳跃弹簧」）。 |
 | Effortless Roll | 轻巧翻滚 | 翻滚闪避消耗的耐力减少。 |
+| Marathon Runner | 马拉松跑者 | 移动消耗的耐力减少。 |
+| Right Back At It | 即刻重整 | 缩短重着陆后的起身时间。2.0 新增。 |
 | Off The Wall | 飞檐走壁 | 你能进行距离更远的墙壁跳跃。 |
-| Vigorous Vaulter | 纵跃无阻 | 耐力耗尽后，翻越动作不会减速。 |
-| Heroic Leap | 英雄一跃 | 冲刺和翻滚闪避的距离增加。 |
-| Ready To Roll | 借势翻滚 | 从高处摔落时，你可以进行受身翻滚的时机窗口扩大了。 |
-| Vaults on Vaults on Vaults | 身轻如燕 | 翻越动作不再消耗耐力。 |
-| Vault Spring | 跳跃弹簧 | 允许你在翻越后起跳。 |
+| Slip and Slide | 纵跃丝滑 | 滑行距离更远，速度更快。 |
+| Swift Start | 迅捷启动 | 延长冲刺启动阶段的高速持续时长。2.0 新增。 |
+| In The Flow | 行云流水 | 冲刺时连续衔接机动动作可提升速度，降低耐力消耗。2.0 新增。末端三选二（另两个是「疲态冲刺」「蹬墙跑」）。 |
+| Sprinting On Fumes | 疲态冲刺 | 冲刺时耐力不会完全耗尽。任何动作或受到伤害都会取消该技能。恢复时间随冲刺时长递增。2.0 新增。末端三选二（另两个是「蹬墙跑」「行云流水」）。 |
+| Wall Run | 蹬墙跑 | 朝墙面冲刺可沿墙向上奔跑数步。2.0 新增。末端三选二（另两个是「疲态冲刺」「行云流水」）。 |
 
 ### 生存（Survival）
 
 | 英文 | 官方简中 | 说明 |
 |---|---|---|
-| Agile Croucher | 快速蹲伏 | 蹲伏时的移动速度提高。 |
-| Looter's Instincts | 搜刮者本能 | 搜索容器时，战利品会更快出现。 |
-| Revitalizing Squat | 活力深蹲 | 蹲伏时耐力恢复速度增加。 |
-| Silent Scavenger | 无声拾荒者 | 拾取战利品时的动静变小。 |
 | In-Round Crafting | 局内制作 | 解锁在上层时现场制作物品的能力。 |
-| Suffer In Silence | 忍痛默行 | 严重受伤时，你的移动动静变小。 |
-| Good As New | 焕然一新 | 在治疗效果下，耐力恢复速度增加。 |
+| Looter's Instincts | 搜刮者本能 | 搜索容器时，战利品会更快出现。 |
+| Sturdy Ankles | 坚韧脚踝 | 从非致命高度掉落时受到的摔落伤害减少。原属机动性分支。 |
+| Agile Croucher | 快速蹲伏 | 蹲伏时的移动速度提高。 |
+| Silent Scavenger | 无声拾荒者 | 拾取战利品时的动静变小。 |
+| Minesweeper | 扫雷高手 | 在靠近地雷或可部署爆炸物时可进行拆除。中段二选一（另一个是「快速翻滚」）。 |
+| Quick Roll | 快速翻滚 | 加速版翻滚闪避，耐力消耗更低，但翻滚距离缩短。2.0 新增。中段二选一（另一个是「扫雷高手」）。 |
+| Gentle Pressure | 轻柔施压 | 破坏物体时的动静变小。原属强化分支。 |
+| Stylish Landing | 华丽着陆 | 从更高处摔落时可以使用受身翻滚。2.0 新增。 |
 | Traveling Tinkerer | 旅行工匠 | 解锁更多可以现场制作的物品。 |
-| Broad Shoulders | 阔肩载物 | 提高你的负重上限。 |
-| Stubborn Mule | 吃苦耐劳 | 你的耐力恢复受负载过重的影响减小。 |
-| One Raider's Scraps | 战地拾遗 | 在奇袭者容器中搜集战利品时，有一定的小概率发现额外的现场制作物品。 |
+| A Little Extra | 破物生资 | 破坏物体可产生资源。原属强化分支。 |
 | Looter's Luck | 好运成双 | 搜刮物品时，有一定的概率一次性发现双倍数量的物品。 |
-| Three Deep Breaths | 三息回神 | 耐力被技能耗尽后的恢复速度提高。 |
-| Security Breach | 安防突破 | 允许撬开保险柜。 |
-| Minesweeper | 扫雷高手 | 在靠近地雷或可部署爆炸物时可以进行拆除。 |
+| Turtle Crawl | 伏地避弹 | 倒地后，你受到的伤害减少。原属强化分支。 |
+| Field Repair | 野外维修 | 对局中可将武器、护盾和小道具的耐用性修复至30%。2.0 新增。末端三选二（另两个是「公路勇士」「游牧工艺」）。 |
+| Nomadic Crafting | 游牧工艺 | 解锁更多种类的物品现场制作权限。2.0 新增。末端三选二（另两个是「公路勇士」「野外维修」）。 |
+| Road Warrior | 公路勇士 | 提升从ARC单位身上搜刮的弹药和ARC能量电池数量，且对局中可满效率回收物资。2.0 新增。末端三选二（另两个是「游牧工艺」「野外维修」）。 |
+
+### 2.0 移除的技能
+
+> 2.0 之前的视频还会提到这些技能，字幕照用原官方名。
+
+| 英文 | 原官方简中 | 原分支 |
+|---|---|---|
+| Blast-Born | 爆鸣抗性 | 强化 |
+| Survivor's Stamina | 求生耐力 | 强化 |
+| Unburdened Roll | 轻装翻滚 | 强化 |
+| Effortless Swing | 轻松挥击 | 强化 |
+| Sky-Clearing Swing | 开天斩 | 强化 |
+| Flyswatter | 拍蝇专家 | 强化 |
+| Carry The Momentum | 顺势而为 | 机动性 |
+| Calming Stroll | 行稳致远 | 机动性 |
+| Heroic Leap | 英雄一跃 | 机动性 |
+| Revitalizing Squat | 活力深蹲 | 生存 |
+| Suffer In Silence | 忍痛默行 | 生存 |
+| Good As New | 焕然一新 | 生存 |
+| One Raider's Scraps | 战地拾遗 | 生存 |
 
 ## 13. 移动、战斗与界面操作
 
@@ -1188,6 +1351,11 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Dodge Roll | 翻滚闪避 | 翻滚 | |
 | vault | 翻越 | 翻 | |
 | climb | 攀爬 | 爬 | |
+| scramble／Scrambling | 攀爬陡坡 | | 2.0 新动作：朝陡坡冲刺可短时间攀上去。客户端技能说明写「攀爬陡坡」。 |
+| wall run | 蹬墙跑 | | 2.0 技能名。 |
+| hip fire | 腰射 | | 不开镜射击；小钢炮的卖点，Embark 简中公告写「腰射」。 |
+| sprint shooting | 冲刺射击 | | 2.0 部分增强武器可以边冲刺边开火；同名任务客户端也译「冲刺射击」。 |
+| weapon bash | 武器重击 | | 2.0 技能：用手里的枪近战。 |
 | melee | 近战 | 近战 | |
 | aim | 瞄准 | 开镜 | |
 | reload | 装填弹药 | 换弹 | |
@@ -1221,7 +1389,7 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Night Raid Dam | 夜间奇袭·大坝战场 | 夜坝 | |
 | the rooster（Scrappy） | 废品仔 | 鸡哥 | |
 | Leaper | 跳跃者 | 大蜘蛛 | |
-| Raider Deck | 奇袭者套件 | 卡组、通行证 | |
+| Raider Deck | 奇袭者套件 | 卡组、通行证 | 2.0 起并入传承奖励通行证；2.0 之后说「通行证」一般指奖励通行证。 |
 | wipe | 远征重置 | 删档 | 本作的远征是自愿重置，不是强制删档。 |
 | GG | 好局 | GG | |
 | "Don't shoot!" | 别开枪！ | 别开枪 | 口语用「别开枪」，表情名是「不要开枪」。 |
@@ -1238,6 +1406,22 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 | Buried City | 埋藏城市、埋葬之城 | 掩埋废城。「埋葬之城」是繁中客户端名。 |
 | Stella Montis | 斯特拉蒙蒂斯、山之星 | 星辰山。 |
 | Riven Tides | 撕裂潮汐 | 裂潮镇。 |
+| Pendola Pass | 霜痕小径 | 彭多拉山口。「霜痕小径」是 2.0 更新名 Frozen Trail。 |
+| Frozen Trail | 冰冻小径、冰封之路 | 霜痕小径（2.0 更新的官方名）。 |
+| Frigate | 护卫舰 | 护卫者。 |
+| Emperor | 皇帝 | 帝王。 |
+| Bully | 霸凌者 | 恶霸。 |
+| Hydra | 海德拉 | 九头蛇。 |
+| Stiletto | 短剑、匕首 | 细剑。 |
+| Bantam | 矮脚鸡 | 小钢炮。 |
+| Grappling Hook／Snap Hook | 互换、抓钩 | Grappling Hook 是钩爪（2.0），Snap Hook 是安全钩。 |
+| Yank Grenade | 拉扯手雷 | 系索弹。 |
+| Amplified | 放大、扩增 | 增强（武器增强、增强型武器、已增强）。 |
+| Stencil | 模板、印花 | 贴花。 |
+| Outpost | 前哨站、前哨基地 | 哨站。 |
+| Research Station | 研究工作站 | 客户端工作台名是「研究站」；「研究工作站」只见于官方公告。 |
+| Nomadic Envoy | 游牧使节 | 游牧使团。 |
+| Reward Points | 奖励点数 | 奖励通行证点数。 |
 | Harvester | 收割机 | 收割者。 |
 | Queen | 女王号 | 女王。 |
 | Matriarch | 女家长、母后 | 族母。 |
@@ -1281,14 +1465,16 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 
 ### 官方与规范名
 
-- [raidertool/asset-index（data 分支）](https://github.com/raidertool/asset-index/tree/data)：用 CUE4Parse 直接从 Steam 版游戏文件抽出的全部语言文件，2026-09-23 快照（Steam manifest 4879539862843747573）。本表所有「字幕首选」、全部地点名、撤离点名、技能名都出自这里的 `zh_hans` 与 `en` 字典。
+- [raidertool/asset-index（data 分支）](https://github.com/raidertool/asset-index/tree/data)：用 CUE4Parse 直接从 Steam 版游戏文件抽出的全部语言文件，2026-09-23 快照（Steam manifest 4879539862843747573）。1.47.0 及以前的「字幕首选」、六张地图的地点名、撤离点名都出自这里的 `zh_hans` 与 `en` 字典。**2026-10-09 核对时仓库已删除**，2.0 的语言文件没能从这里取得。
+- [Embark Steam 简中公告《霜痕小径》](https://store.steampowered.com/news/app/1808500/view/708911159562993739)（2026-10-08）：2.0 新内容的官方简中——彭多拉山口、托雷多、帝王、护卫者、恶霸、潜伏者、九头蛇、极寒冰爆、航向重定向、哨站、研究工作站、武器增强、小钢炮、钩爪、系索、相机、口琴、班卓琴、武器贴花、奖励通行证、收藏套装。
+- [baschny/arcraiders-raider-tools 的 2.0 游戏数据](https://github.com/baschny/arcraiders-raider-tools/tree/main/public/data/game)（`gameVersion` 2.0，2026-10-08 生成）：由 Embark 游戏数据生成的物品、技能树、任务、研究、哨站、贴花简中文本。2.0 的新物品名、技能名与效果说明、彭多拉山口的地点（任务文本）都出自这里。与本表 1.47.0 客户端名逐项比对，只有两个 ARC 零件名不同（故障ARC相控阵列、故障ARC线圈，已按 2.0 改），所以可信度按客户端处理。它的 `maps.text` 地图条件名（繁茂花丛、机壳墓地）来自第三方，不采用。
 - [Steam 商店简中页](https://store.steampowered.com/app/1808500/ARC_Raiders/?l=schinese)：游戏名不译、奇袭者、斯佩兰扎、地表、ARC机器。
-- [Embark 官方补丁说明（Steam 公告）](https://store.steampowered.com/news/app/1808500)：英文原文，用来判断每项内容的上线时间和是否已上线。
+- [Embark 官方补丁说明（Steam 公告）](https://store.steampowered.com/news/app/1808500)与 [2.0 完整补丁说明](https://arcraiders.com/news/frozen-trail-2-0-update)：英文原文，用来判断每项内容的上线时间和是否已上线。
 - [腾讯国服《弧光猎人》官网](https://arc.qq.com/main.shtml)：国服名与国服用词。
 
 ### 社区资料
 
-- [RaidTheory/arcraiders-data](https://github.com/RaidTheory/arcraiders-data)：物品与技能数据，用于物品类别、稀有度、技能分支和效果说明，并与客户端逐项交叉核对（物品名以客户端为准）。
+- [RaidTheory/arcraiders-data](https://github.com/RaidTheory/arcraiders-data)：物品与技能数据（更新停在 1.42），1.47.0 版本表用它补物品类别、稀有度和旧技能树的效果说明，并与客户端逐项交叉核对（物品名以客户端为准）。
 - [游民星空：《ArcRaiders》新手入门指南](https://www.gamersky.com/handbook/202510/2038398.shtml)：卡组＝通行证、废品仔、安全口袋等写法。
 - [游民星空：《Arc Raiders》常见问题解答](https://www.gamersky.com/handbook/202510/2037782.shtml)：发售前的非客户端译名（埋藏城市、斯特拉蒙蒂斯、斯佩兰萨、铁锈带、收割机、掠夺者套牌），用作误译表的依据。
 - [游民星空社区：DontShoot玩家聊聊这次Arc的上手体验](https://club.gamersky.com/activity/1502652?club=1352)：鼠鼠、猛攻哥、跑刀、舔包、夜坝、背后放冷枪。
@@ -1297,15 +1483,19 @@ source_scope: ARC Raiders 国际服（Steam／Embark）简中客户端，1.47.0 
 
 ### 可信度说明
 
-- 「字幕首选」、地点名、撤离点名、技能名：直接取自客户端语言文件，可信度高。
-- 敌人与地图条件：名称取自客户端；是否已上线以 Steam 补丁说明为准，敌人行为说明较简略。
-- 技能效果说明：来自 RaidTheory 数据集，数值可能随版本变化。
+- 「字幕首选」、地点名、撤离点名：直接取自客户端语言文件，可信度高。
+- 2.0 新内容：名称取自 Embark 简中公告和 2.0 游戏数据，可信度高；彭多拉山口的地点只来自任务文本和钥匙名，不是完整的地点表。标「建议译名」的是本表自拟，不是官方名。
+- 敌人与地图条件：名称取自客户端或官方公告；是否已上线以 Steam 补丁说明为准，敌人行为说明较简略。
+- 技能名与效果说明：2.0 起取自 2.0 游戏数据；「2.0 移除的技能」保留原客户端名。
 - 「中文社区常见说法」列：本作中文社区体量较小，只收在上述资料里见到的叫法和搜打撤类游戏通用的黑话。
 - 更新名（North Line、Headwinds 等）客户端没有汉化，本表保留英文。
 
 ## 17. 待维护项
 
-- 客户端里已有、截至 1.47.0 补丁说明未提及的内容：地图 Pendola Pass（霜痕小径），敌人 Hydra（九头蛇）、Bully（恶霸）、Skulker（潜伏者）、ARC Frigate（ARC“护卫者”），地图条件 Acid Rain（酸雨）、Heat Wave（热浪）、Toxic Swamp（剧毒沼泽）、Show of Force（武力震慑）、Derecho（律法区）、Windswept（狂风区）、High Winds（强风）。上线后移入正文。
+- 客户端里已有、截至 2.0 补丁说明仍未提及的地图条件：Acid Rain（酸雨）、Heat Wave（热浪）、Toxic Swamp（剧毒沼泽）、Show of Force（武力震慑）、Derecho（律法区）、Windswept（狂风区）、High Winds（强风）。上线后移入正文。（1.47.0 时列在这里的彭多拉山口、九头蛇、恶霸、潜伏者、ARC护卫者已随 2.0 上线，移入正文。）
+- 取得 2.0 客户端语言文件（asset-index 已删除，需另找来源），补齐彭多拉山口的完整地点名和撤离点、增强武器分支能力的界面名、贴花与家具全名。
+- 1.47.0 客户端里预置的 Pendola Pass 译名当时记作「霜痕小径」；2.0 的任务文本、钥匙名和简中公告都写「彭多拉山口」，「霜痕小径」改作更新名。拿到 2.0 语言文件后确认选图界面的写法。
+- PvE 匹配测试（2026-10-13 至 10-20）结束后，看官方有没有给中文名。
 - 国服《弧光猎人》正式上线后，核对是否有名词改动。
 - 每次大更新或远征后重新抓取语言文件，比对新增的地点、物品和敌人。
 - 中文社区黑话仍在形成，新叫法确认广泛使用后再收录。
