@@ -29,7 +29,7 @@ grep -n "tap-strafe" references/glossaries/apex.md
 | Minecraft 速通 / MCSR | `minecraft-mcsr.md` | 358 | 1.16.1 RSG + MCSR Ranked | 2026-09-21 |
 | StarCraft / 星际争霸 | `starcraft.md` | 761 | 星际2 虚空之遗天梯（5.0 版本线）+ 母巢之战 | 2026-09-22 |
 | Counter-Strike / 反恐精英 | `counter-strike.md` | 884 | CS2 国际服 + 完美国服差异，9 张图逐点报点 | 2026-09-23 |
-| ARC Raiders | `arc-raiders.md` | 1,069 | 简中客户端 1.47.0，6 张图全部官方地点名 | 2026-09-23 |
+| ARC Raiders | `arc-raiders.md` | 1,226 | 简中客户端 1.47.0 + 2.0「霜痕小径」新增内容；最早 6 张图全部官方地点名，彭多拉山口部分地点 | 2026-10-09 |
 
 ## Which sections to read
 
@@ -75,13 +75,17 @@ Connector are different spots on different maps. §4–5 for weapons and utility
 §6–7 for aim and tactics jargon, §12 for skins, §14 for the misreading list.
 `headshot` is 爆头, never the 国服 精准打击.
 
-**`arc-raiders.md`** — every 字幕首选 comes from the game client's own Simplified
-Chinese strings, so never translate a name the client already has. Read 字幕使用原则,
-then §6 for places (every official location on all six maps, plus extraction
-points) and §7 for ARC machines. §8–11 for weapons and items, §12 for the skill
-tree, §15 for the misreading list: Topside is 上层, Raider is 奇袭者, and several
-weapon names circulating online (琶音, 叛徒, 均衡器) are Traditional-client or fan
-names, not the Simplified client's.
+**`arc-raiders.md`** — every 字幕首选 comes from the game's own Simplified Chinese
+(client strings up to 1.47.0; Embark's Chinese announcement and the 2.0 game data
+for the Frozen Trail update), so never translate a name the game already has. Read
+字幕使用原则, then §6 for places (every official location on the first six maps
+plus extraction points; Pendola Pass, added in 2.0, only has the places quest text
+names) and §7 for ARC machines. §8–11 for weapons and items, §12 for the skill tree
+(rebuilt in 2.0, with the removed skills kept for older videos), §15 for the
+misreading list: Topside is 上层, Raider is 奇袭者, the map Pendola Pass is
+彭多拉山口 while 霜痕小径 is the update's name, and several weapon names
+circulating online (琶音, 叛徒, 均衡器) are Traditional-client or fan names, not the
+Simplified client's.
 
 ## When the video has no glossary here
 
