@@ -30,6 +30,7 @@ grep -n "tap-strafe" references/glossaries/apex.md
 | StarCraft / 星际争霸 | `starcraft.md` | 761 | 星际2 虚空之遗天梯（5.0 版本线）+ 母巢之战 | 2026-09-22 |
 | Counter-Strike / 反恐精英 | `counter-strike.md` | 884 | CS2 国际服 + 完美国服差异，9 张图逐点报点 | 2026-09-23 |
 | ARC Raiders | `arc-raiders.md` | 1,226 | 简中客户端 1.47.0 + 2.0「霜痕小径」新增内容；最早 6 张图全部官方地点名，彭多拉山口部分地点 | 2026-10-09 |
+| Dead by Daylight / 黎明杀机 | `dead-by-daylight.md` | 1,730 | 简中客户端 6.1.0 + 官方简中补丁说明至 10.2.2；44 杀手、54 逃生者、全部 321 技能 | 2026-10-22 |
 
 ## Which sections to read
 
@@ -87,6 +88,18 @@ misreading list: Topside is 上层, Raider is 奇袭者, the map Pendola Pass is
 circulating online (琶音, 叛徒, 均衡器) are Traditional-client or fan names, not the
 Simplified client's.
 
+**`dead-by-daylight.md`** — names come from the client's own Simplified Chinese
+(full 6.1.0 extraction) and, for everything added since mid-2022, from Behaviour's
+official Simplified Chinese patch notes on Steam. Read 字幕使用原则 first: Survivor is
+逃生者 (never 幸存者), Hatch is 地道, Obsession is 血祭品, and status effects have fixed
+names (Exposed 危险, Broken 不治, Hindered 减速). Principle 5 matters for anything
+older: in 9.4.0 (2026-01-28) six perks were renamed when the Halloween licence
+ended (Decisive Strike → Will to Live, 果断反击 → 求生意志), so pick the name by the
+video's date. Then §6 for killers (official title, real name, power, and the
+community nickname), §8 for perks (alphabetical, grep them), §9 for power
+mechanics, §3–4 for match mechanics and status effects, §13 for slang
+(屠夫, 人类, 修机, 遛屠夫, 守尸, 打针对, 三连), §14 for the misreading list.
+
 ## When the video has no glossary here
 
 Most videos will not. That is the normal case, not a failure:
@@ -104,7 +117,7 @@ a descriptive translation and say in your handoff that it is not an official nam
 ## Adding a glossary
 
 Drop a `<game>.md` file in this directory and add a row to the table above. The
-seven existing files share a shape worth copying, because it is what makes them
+eight existing files share a shape worth copying, because it is what makes them
 usable mid-translation rather than only as reading:
 
 - YAML frontmatter with `source_scope` and `updated` — scope matters because
@@ -119,6 +132,6 @@ usable mid-translation rather than only as reading:
 - A sources section, separating official from community, so a later reader can
   tell which rows are authoritative and which are observed usage.
 
-These seven came from `HedgehogGX's Vault/Atlas/`. When a glossary is updated
+These eight came from `HedgehogGX's Vault/Atlas/`. When a glossary is updated
 there, copy it here again — this directory is the published copy, not the
 working one.

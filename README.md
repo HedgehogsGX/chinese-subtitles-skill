@@ -18,7 +18,8 @@ glossary.
   (1,217 rows), **Warframe** (3,844), **osu!** (429), **Minecraft 速通/MCSR**
   (358), **StarCraft 星际争霸** (761), **Counter-Strike 反恐精英** (884, with
   callouts for every Active Duty map), **ARC Raiders** (1,226, through the 2.0
-  update, with official map locations) — each with its own 字幕使用原则 conventions for which jargon stays
+  update, with official map locations), **Dead by Daylight 黎明杀机** (1,730, every
+  killer, survivor and perk through 10.2.2) — each with its own 字幕使用原则 conventions for which jargon stays
   in English and which official Simplified name to use
 - Handles video with no glossary too: talks, vlogs, tutorials, other games. It
   translates against verifiable official names and hands back the list of terms
@@ -71,6 +72,7 @@ references/glossaries/
   starcraft.md                   星际争霸 — SC2 虚空之遗 ladder + Brood War
   counter-strike.md              反恐精英 — CS2, per-map callouts, 国服 differences
   arc-raiders.md                 ARC Raiders — client strings through 2.0, map locations
+  dead-by-daylight.md            黎明杀机 — client strings + official patch notes, 10.2.2
 references/pipeline.md           known traps: downloads, drift, splice arithmetic, term splitting
 assets/NotoSansSC-Bold.ttf       思源黑体 Bold (static instance)
 scripts/
